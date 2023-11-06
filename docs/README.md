@@ -41,6 +41,8 @@ Yukarıda da görüldüğü gibi şu an hükümetin **PEF** ve **Peppol** platfo
 
 <h3>Polonyadaki ERP çözümlerinde uzmanlaşmış entegratörler</h3>
 
+[ERP yazılım/danışmanlık hizmetleri veren 43 firmayı görüntülemek için buraya tıklayınız.](https://clutch.co/pl/it-services/erp)
+[Alternatif link](https://www.goodfirms.co/implementation-services/erp-consulting/poland)	
 1. [Saergin](https://seargin.com/), ERP danışmanlığı ve uygulama hizmetleri sunan bir yazılım geliştirme şirketi. Öncesinde BNP PARIBAS, Orange, T-Mobile, BOSCH, Nestle gibi büyük firmalar ile referansları da vardır.
 2. [Arche Softronix]("https://archesoftronix.com/enterprise-resource-planning/"), Polonya'da da bir ayağı olan ve yazılım geliştirme hizmetleri sunan, oracle; atos, generali gibi referansları da bünyesinde bulunduran bir ERP firmasıdır.  
 3. [asseco](https://assecobs.pl/erp/), kurumsal yönetim için ERP sistemleri tedarik eden ve uygulayan bir ERPdir. 
@@ -49,7 +51,6 @@ Yukarıda da görüldüğü gibi şu an hükümetin **PEF** ve **Peppol** platfo
 6. [comarch](https://www.comarch.com/erp/), Polonya'daki birçok işletme tarafından kullanılan kapsamlı bir muhasebe ve ERP yazılım firmasıdır. Finansal yönetim, raporlama ve Polonya vergi düzenlemelerine uyum için çeşitli özellikler sunar.
 7. [im-prove](https://www.im-prove.pl/pl/?utm_medium=referral_profile&utm_source=clutch.co), KSeF vergi sistemi destekli bir yapıya sahip olan Polonya lokalli bir ERP.
 8. [nomino](https://nomino.pl/), Tescilli polonya lokalli ERP yazılım/danışmanlık hizmetleri sunan, işletmelere yönelik ERP sistemlerinin uygulanmasını sağlayan bir firma. 
-[ERP yazılım/danışmanlık hizmetleri veren 43 firmayı görüntülemek için buraya tıklayınız.](https://clutch.co/pl/it-services/erp)	
 
 
 <h4>PEF ve Peppolün faturalandırmadaki rolü nedir?</h4>
