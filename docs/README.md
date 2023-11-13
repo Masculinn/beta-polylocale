@@ -1,57 +1,18 @@
-## Intro
+# Giriş
 
 Bu dökümantasyon,
 
-e-fatura Entegrasyon Projesi [`PolyLocale`](#intro) çerçevisinde, Polonya e-fatura düzenlemelerine uyum sağlama amacı taşıyan stratejik bir inisiyatiftir. Bu proje, iki temel sistemin entegrasyonunu içerir: [PEF](https://efaktura.gov.pl/uslugi-pef/)    (e-faturalama Platformu) ve [KSeF](https://ksef-test.mf.gov.pl/) (Ulusal e-Fatura Sistemi). 
+B2B'de [KSeF](https://ksef-test.mf.gov.pl/) (Ulusal e-Fatura Sistemi) ve B2G'de [PEF](https://efaktura.gov.pl/uslugi-pef/)(e-faturalama Platformu) olmak üzere iki büyük temel faturlama platformun çerçevisinde, Polonya e-fatura düzenlemelerine uyum sağlama amacı taşıyan stratejik bir inisiyatiftir.  
 
-> PEF; kar gütmeyen, ihale makamları ve ihale yüklenicileri arasında yapılandırılmış e-faturaların ve diğer belgelerin alınması ve gönderilmesi için merkezi bir platformdur.
+Büyük şirketler, güncel olarak sanal ortamda faturalandırma sistemlerinin tamamının değiştirilecek olması dolayısıyla; **1 Temmuz 2024** tarihinde temelli [KSeF VAT(KDV)](https://www.podatki.gov.pl/e-deklaracje/dokumentacja-it/struktury-dokumentow-xml/#ksef) entegrasyonlarının hazırlık aşamalarına başlamış durumdalar.
 
-**Bu projenin temel amacı** EDM bilişimin firmasının, hali hazırda Türkiye'de yürüttüğü e-fatura alanındaki entegratör operasyonlarının Polonya lokalizasyonunu ve halka açık bir fatura altyapısı arasındaki kritik bağlantıyı sağlamaktır. 
-
-**Polylocale kapsamında, aşamalı 5 hedefe odaklanılır:**
-
-- [Hukuki ve Düzenleyici Uyumluluk](#yasal-ve-düzenleyici-uyumluluk)
-- [Sistem Mimarisi](#sistem-mimarisi)
-- [PEF Sistemi Entegrasyonu](#pef-dokümantasyonu)
-- [KSeF Sistemi Entegrasyonu](#ksef-dokümantasyonu)
-- [Veri Eşlemesi ve Dönüşüm](#veri-haritalama-ve-dönüştürme)
-
-
-
-
-## Projeye Genel Bakış
-
-Büyük şirketler, güncel olarak sanal ortamda faturalandırma sistemlerinin tamamının değiştirilecek olması dolayısıyla; **1 Temmuz 2024** tarihinde temelli [KSeF VAT(KDV)](https://www.podatki.gov.pl/e-deklaracje/dokumentacja-it/struktury-dokumentow-xml/#ksef) entegrasyonlarının hazırlık aşamalarına başlamış durumdalar. [KSeF VAT(KDV)](https://www.podatki.gov.pl/e-deklaracje/dokumentacja-it/struktury-dokumentow-xml/#ksef) sistemi zaten bir önceki hazırlamış olduğumuz `KSeF e-beyanname` programı ile yapı bakımından çok benzer yapıya sahip olduğunu belirtmek isterim. Polonya'da Düzenlenmiş ve değiştirilmesi **1 Temmuz 2024** tarihinde planlanan  **temel ve ticari fatura senaryolarına dayanan e-fatura Sistem özellikleri tablosu** aşağıdaki gibidir.
-
-![logo](./_media/intro_specifications.png)
-
-Yukarıda da görüldüğü gibi şu an hükümetin **PEF** ve **Peppol** platformları aracılığıyla [manuel](https://www.brokerinfinite.efaktura.gov.pl) veya [otomatik](#intro) olarak sanal ortamda fatura kesmek mümkündür. 
-
-> **Manuel** fatura kesimlerinde, istemci bir kullanıcıdan; kuruluşun adı, NIP(Vergi Kimlik Numarası), REGON (sadece Faktör için), e-mail ve Güvenilir bir profille tanımlama istenir.
-
-> **Otomatik** fatura kesimlerinde, API kullanılarak faturanın `UUID`'si ile yani unique ID'si ile fatura kesmek de mümkün. İlerleyen bölümlerde endpoint bölümü hakkında bilgiler de mevcuttur.
+![KSeF Spesifikasyonlar](./_media/intro_specifications.png)
 
 ?> Faturalandırmalarda güncel olarak *elektronik imza zorunluluğu yoktur*.
 
 ?> Fatura saklama işlemleri, [entegratörlerin bulutlarında]() 5 yıl, [OSS](https://www.pagero.com/blog/oss-ioss) (One-Stop Shop) şeması altında 10, [KSeF](https://ksef-test.mf.gov.pl/) altında ise 10 yıldır.  
 
 > [OSS](https://www.pagero.com/blog/oss-ioss) nedir? Tek Noktadan Hizmet (OSS) programı, tüm AB Üye Devletlerindeki satışlarda KDV'nin tek bir vergi dairesine ödenmesinin olanağını sağlayan bir programdır.
-
-<br>
-
-<h3>Polonyadaki ERP çözümlerinde uzmanlaşmış entegratörler</h3>
-
-[ERP yazılım/danışmanlık hizmetleri veren 43 firmayı görüntülemek için buraya tıklayınız.](https://clutch.co/pl/it-services/erp)
-[Alternatif link](https://www.goodfirms.co/implementation-services/erp-consulting/poland)	
-1. [Saergin](https://seargin.com/), ERP danışmanlığı ve uygulama hizmetleri sunan bir yazılım geliştirme şirketi. Öncesinde BNP PARIBAS, Orange, T-Mobile, BOSCH, Nestle gibi büyük firmalar ile referansları da vardır.
-2. [Arche Softronix]("https://archesoftronix.com/enterprise-resource-planning/"), Polonya'da da bir ayağı olan ve yazılım geliştirme hizmetleri sunan, oracle; atos, generali gibi referansları da bünyesinde bulunduran bir ERP firmasıdır.  
-3. [asseco](https://assecobs.pl/erp/), kurumsal yönetim için ERP sistemleri tedarik eden ve uygulayan bir ERPdir. 
-4. [itransition](https://www.itransition.com/erp), global ERP yazılım/danışmanlık firmaları arasındak liderlerinden.
-5. [evergopartners](https://evergopartners.com/), allegro ile işbirliği yapmış olan evergopartners, Polonyadaki ERP yazılım/danışmanlık firmaları arasındaki lider 
-6. [comarch](https://www.comarch.com/erp/), Polonya'daki birçok işletme tarafından kullanılan kapsamlı bir muhasebe ve ERP yazılım firmasıdır. Finansal yönetim, raporlama ve Polonya vergi düzenlemelerine uyum için çeşitli özellikler sunar.
-7. [im-prove](https://www.im-prove.pl/pl/?utm_medium=referral_profile&utm_source=clutch.co), KSeF vergi sistemi destekli bir yapıya sahip olan Polonya lokalli bir ERP.
-8. [nomino](https://nomino.pl/), Tescilli polonya lokalli ERP yazılım/danışmanlık hizmetleri sunan, işletmelere yönelik ERP sistemlerinin uygulanmasını sağlayan bir firma. 
-
 
 <h4>PEF ve Peppolün faturalandırmadaki rolü nedir?</h4>
 
@@ -68,16 +29,6 @@ Yukarıda da görüldüğü gibi şu an hükümetin **PEF** ve **Peppol** platfo
 
 **Peppol (Pan-European Public Procurement OnLine)** ise Avrupa'da birçok ülkede e-faturalandırmayı kolaylaştırmak ve sürdürülebilir bir şekilde yapmak amacıyla oluşturulmuş bir platformdur. Polonya da Peppol'u benimsemiş ve bu platform Polonya'da e-faturalandırmada önemli bir rol oynamıştır. 
 
-<h3>Polonya'daki bazı ERP Şirketleri</h3>
-
-Ülkedeki ERP çözümlerinde uzmanlaşmış entegratörler:
-
-- [Comarch]('') 
-- Soneta
-- Asseco Poland
-- SoftSystem
-- UNIT4 Polska
-
 > Peppol'ün başlıca rolleri:
 
 - **Uluslararası Fatura Değişimi** Peppol, uluslararası düzeyde e-fatura değişimini kolaylaştırır ve standartlarını sağlar.
@@ -87,84 +38,9 @@ Yukarıda da görüldüğü gibi şu an hükümetin **PEF** ve **Peppol** platfo
 
 
 ?> **PEF** platform standardındaki e-fatura belgesi, PEPPOL **İş Birlikte Çalışabilirlik Spesifikasyonları** spesifikasyonunda tanımlanmıştır. [OpenPEPPOL](https://peppol.org/) tarafından yayınlanan açıklamalara göre şu an yürürlükte olan [Avrupa Standartı PEF BIS 3.0](http://docs.peppol.eu/poacc/billing/3.0/) Faturalandırma versiyonu [`UBL 2.1`](https://docs.oasis-open.org/ubl/UBL-2.1.html) üzerine kuruludur. 
-
-<h4>PEPPOL üyesi nasıl olunur?</h4>
-
- İlgili İnfrastuktür Sağlayıcısı, EDM'nin PEPPOL ağına katılma sürecine rehberlik edecektir.
-
-**PEPPOL İnfrastuktür Sağlayıcısı Seçimi**
-
-İlk olarak, bir PEPPOL İnfrastuktür Sağlayıcısı (Peppol Access Point) seçilmeli. PEPPOL İnfrastuktür Sağlayıcıları, PEPPOL ağına bağlantı sağlayan ve PEPPOL standardına uygun iletişim hizmetleri sunan firmalardır:
-
-- [Pagero](https://www.pagero.com/), PEPPOL ağına katılan ve e-fatura iletişimi sağlayan bir İnfrastuktür Sağlayıcısıdır. Birçok ülkede faaliyet göstermektedir.
-- [Basware](https://www.basware.com/en-us/home/), e-fatura süreçlerini yönetmek için PEPPOL ile uyumlu hizmetler sunan bir İnfrastuktür Sağlayıcısıdır.
-- [Tradeshift](https://tradeshift.com/), işletmeler arasında e-fatura değişimi için PEPPOL standardını destekleyen bir platform sunar.
-- [OpusCapita](https://opuscapita.com/), fatura otomasyonu ve e-fatura değişimi çözümleri sunan bir PEPPOL İnfrastuktür Sağlayıcısıdır.
-- [TIE Kinetix](https://tiekinetix.com/en): TIE Kinetix, PEPPOL ile uyumlu çeşitli hizmetler sunan bir İnfrastuktür Sağlayıcısıdır.
-
-**1- Üyelik Başvurusu**
-Seçilen PEPPOL İnfrastuktür Sağlayıcısı ile iletişime geçilmesi ve üyelik başvurusunun yapılması.
-
-**2- Tanımlama ve Kimlik Doğrulama**
-Üyelik başvurusu onaylandığında, entegratör PEPPOL ağına tanıtılır. Bu aşamada, entegratörün kimlik doğrulama işlemleri gerçekleştirilir.
-
-**3- PEPPOL Sertifikaları**
-PEPPOL ağına katılmak için *sertifikalı bir erişim noktası (Access Point)* olmak gerekebilir. Bu, güvenli elektronik iletişim sağlamak ve diğer PEPPOL üyeleriyle güvenli bir şekilde fatura değişimi yapmak için gereklidir. PEPPOL sertifikaları, organizasyonun erişim noktası sağlayıcısı tarafından sağlanır.
-
-**4- Entegrasyon**
-PEPPOL standardına uygun bir şekilde organizasyonunuzun iç sistemlerini ve iş süreçlerinizi entegre etmek için gerekli teknik çalışmaları yapılması. Bu, PEPPOL ağına bağlanıldığında e-fatura işlemlerini sorunsuz bir şekilde gerçekleştirmeyi sağlar.
-
-
-**5- Fatura Değişimi ve İşbirliği**
-PEPPOL ağına katılındığında, diğer PEPPOL üyeleriyle e-fatura değişimi yapılabilir ve işbirliği fırsatlarına erişilebilinir.
-
-!> _Bu kısımda kritik rol oynayan soru_ **1 Temmuz 2024** _tarihinde_ **tamamen (KSeF tabanlı)**  _yeni bir sisteme geçecek olan bu ülkede_, **EDM** _PolyLocale(Lokalizasyon) sürecinde yeni prosedürlere dayanarak_ **nasıl bir yoldan ilerlemeli?**
   
-## Yasal ve Düzenleyici Uyumluluk
 
-**Hukuki ve düzenleyici uyumluluk kavramı**, çeşitli endüstrileri ve sektörleri düzenleyen kurallar, yasalar ve standartların geniş bir yelpazesini içermeli ve işletmelerin nasıl faaliyet göstermeleri gerektiğini ve kendilerini nasıl davranmaları gerektiğini belirlemelidir. Aynı zamanda, Polonya'da e-fatura alanındaki iki önemli sistem olan [KSeF](https://ksef-test.mf.gov.pl/) (Krajowy System e-Faktur) ve [PEF](https://efaktura.gov.pl/uslugi-pef/) (Polonya e-fatura Çerçevesi) gibi özel düzenlemelere tabi olur. 
-
-?> *KSeF*, mali ve muhasebe işlemleri ile ilgilenirken, *PEF* yalnızca e-fatura sistemini kullanarak veri transferi yapar. Bu iki sistem, organizasyonların e-fatura değişimi ve düzenlemelerine uyma çabalarında önemli bir rol oynuyor. 
-
-!> **Her entegratörde olduğu gibi EDM tarafında da, entegrasyonun temel prensiblerinden en önemlisi; kullanılan direkt ve/veya aracı muhasebe ve ön muhasebe programlarının uyuşukluğudur. Bu sebeple, Polonya operasyonlarında muhasebe programları fazlaca önem arz ediyor.**
-
-Polonya'da güncel olarak kullanılan muhasebe programlarından popüler olanları:
-
-- [Comarch Optima](#), Polonya'daki birçok işletme tarafından kullanılan kapsamlı bir muhasebe ve ERP yazılımıdır. Finansal yönetim, raporlama ve Polonya _vergi düzenlemelerine uyum için_ çeşitli özellikler sunar.
--[Symfonia](#), Muhasebe, bordro ve diğer _finansal görevler için_ modüller sunar.
-- [Insert](#) , _muhasebe ve finansal yazılım çözümleriyle_ tanınır. Defter tutma, faturalama ve finansal raporlama için araçlar sağlar.
-- [Subiekt](#), Polonya'daki _küçük ve orta ölçekli işletmeler tarafından sıklıkla kullanılır_. Muhasebe, envanter yönetimi ve satış için özellikler içerir.
-- [Sage Business Cloud Accounting](#), Polonya dahil _çeşitli ülkelerdeki işletmeler tarafından kullanılan_ Sage Business Cloud Accounting dahil olmak üzere muhasebe çözümleri sunmaktadır.
-- [Xero](#), dünya çapındaki işletmeler tarafından kullanılan _bulut tabanlı bir muhasebe yazılımıdır_. Çevrimiçi faturalandırma, banka mutabakatı ve finansal raporlama için özellikler sunar.
-
-?> **KOBİ**'ler için bu değişiklik biraz daha esnek bir çerçeveye sahip. Büyük firmaların sistem altyapısının KSeF'e entegre edilmesinin 1 Temmuz 2024 tarihine kadar zorunlu olduğundan söz etmiştik. **KOBİLER için ise bu zorunluluk 1 Temmuz 2026 tarihine kadar esnek bir yapıya sahip şu anlık bahsedilen tarihe kadar herhangi bir zorunluluk söz konusu değildir.**         
-
-> Sürekli ve sürekli vurgulanan bu büyük değişiklik; 11 ay içinde, her mükellef artık KSEF olmadan fatura düzenleyemeyecek veya alamayacak. Değişiklikleri uygulamak basit bir mesele değil, bu nedenle şirketler şimdiden tüm hızıyla hazırlıklara başlamış durumda. Muhasebe tarafında büyük değişikliğe gidileceği de aşikar. **Bu durumda, EDM'nin seçmesi gereken muhasebe programının hazırlık sürecine şimdiden başlamış olması gerekiyor.**
-
-Özetle, KOBİ ve/veya büyük şirketlerde oluşturulacak faturalandırma sisteminin işleyişi, değiştirilecek olan kanunlara göre doğrudan bağlantılı olup bu konu hakkında bir karara gidilmesi söz konusu olmalıdır. Her işletme artık `K#API v 2.0.3` olmadan fatura düzenleyemeyecek veya alamayacak.
-
-Son 3 versiyonun genel versiyon kuramları aşağıda belirtildiği gibidir.
-
-<h4> K#API v 2.0.3 </h4>  
-
-- _Referans numarasına göre_ işlem durumunu kontrol etmek için yetkisiz sorgu için örnek yanıtın değiştirilmesi.
-- Oturum başlatma isteğinden gelen yanıt için `SessionContextType`'ta `SubjectNameType` olan tür `SubjectCompleteNameType` olarak değiştirildi. (`tradeName` alanı kaldırıldı).
-- İki veya daha fazla önceki ön ödeme fatura numarasını içeren bir fatura/ön ödeme faturası/kapsamlı faturanın gönderilmesiyle ilgili bir hatanın düzeltilmesi.
-- Veri türü doğruluğunu zorunlu kılan hizmet sözleşmesinde aşamalı değişiklik.
-
-<h4>#API v 2.0.2</h4>
-
-- Oturum işlemi için son durum 200'ü geri yüklenmesi.
-- Fatura arşivleme adımında telefon alanı için kodlama iyileştirildi.
-
-<h4>#API v 2.0.1</h4>
-
-- Değişiklik geçmişi ile belge yapısının değiştirilmesi.
-- `amountType` için Fatura Detayını Sorgula'da tür değişikliği.
-- `Subunit_manage` izni için _JST_ veya _GRV_ izinleri sorgulanırken yetki yok hatasının düzeltilmesi.
-- **Arayüz Spesifikasyonu** - güncellenmiş açıklama ve yamli bağlantıları.
-
-## Sistem Mimarisi 
+## Sistem Mimarisi <!-- {docsify-ignore} -->
 
 > Bu kısımda, grafik modellemelerine yer verilmiştir. Sistemin genel işleyici ele alınmış olup, teknik kısımlara yüzeysel olarak [Entegrasyona Genel Bakış](#entegrasyona-genel-bakış) bölümünde ve derinlemesine *dökümantasyon* kısımlarında ele alınmıştır. 
 
@@ -176,7 +52,6 @@ note:
 Tedarikçi için uygun bir formatta **fatura veya fatura verileri**
 
 ERP --> Tedarikçi: FEEDBACK
-
 
 ERP <=> KSeF: API
 note:
@@ -190,36 +65,32 @@ KSeF faturası ve KSeF numarasına atıfta bulunarak alıcı için uygun bir for
 
 Sistem modeli, Tedarikçi veya Müşteri tarafından yetkilendirilmiş bir kuruluş olarak KSeF faturalarını düzenleyen ve alan aracı ek hizmetiyle birlikte mevcut ERP mekanizmalarının sürdürülmesidir. Yukarıdaki modelde bu önemli noktalara değinilmiştir.
 
-<swimlanes-io>
-title: PolyLocale'in PRATİKTEKİ GÜNCEL KONUMU NEREDE?
+# KSeF
 
-Mevcut Veri Analizi -> Veri Eşleme Stratejisi: **DATA**  
-note:
-Şu ana kadar **EDM** ile **Atlantic Valley Partners** arasında planlanan ve uygulamaya geçilen **eğitim programları** süresi boyunca; **Atlantic Valley teknik** kısmında _connector/collector_, _SOAP web services_(`request` `respond` `data_fetching`) gibi _back-end_ tabanlı eğitimler ve aynı zamanda teknik ekibin yanı sıra, **Atlantic Valley tüm ekibi** olarak; __ERP cloudy ve genel EDM portal eğitimleri__ gerçekleştirildi. Genel olarak, fatura kesme, fatura senaryoları, fatura yönetimi, fatura diagnose, fatura düzeltme, gibi temel ticari ve irsaliye senaryolarının yönetimleri öğrenildi.              
-  
-Veri Eşleme Stratejisi -> Polonya veri mimarisi: **DATA EXCHANGE**
-note:
-**EDM Bilişim** ile **Atlantic Valley Partners** arasında planlanan entegrasyonda implementasyon kısmına çok yaklaşıldı; Eksik, uyumsuz ve farklı verileri değerlendirmesi konusunda, teknik sorumlunun; uygulama bünyesinde kolay bir şekilde ulaşabileceği **PolyLocale** dökümantasyonu ile projedeki farklılıklar ve benzerlikler belirtildi. Polonyadaki dökümantasyon yapıları çıkarılıp türkçeleştirdi. Veri dönüşüm kurallarının ve mantığının kavranması için gerekli bilgiler istiflendi.       
+`KSeF` (Ulusal e-Fatura Sistemi), faturaların elektronik ortamda düzenlenmesi ve alınmasına yönelik bir platformdur.
 
-Polonya veri mimarisi --> Veri Eşleme Stratejisi: Feedback
+**İletişim, sistemin mükellefin bağlamına dayandığı bir süreçtir.** Vergi mükellefinin toplu fatura düzenleme yeteneğine sahip olduğu görülmektedir. Faturaların düzenlenmesinde rol oynayan kuruluş, etkileşimli işlemler için bir varlık olabilir; bu, faturaları alan, düzenleyen veya yetkilendiren kuruluşu içerebilir.
 
-Mevcut Veri Analizi --> :Polonya veri mimarisi **match_same_protocol** 
-note:
-Aynı olan protokollerin, sistematik olarak aktarımın sağlanması.
+<br>
 
-Veri Eşleme Stratejisi -> İmplementasyon: **ERP Lokalizasyonu**  
-note:
-Değerlendirilen uygulama prototipinin, **MVP** halinin; kullanıma hazır hale getirilmesi. Temel faturalama senaryosunda gerekli olan back-end konfigürasyonlarının yapılması: Controller'a bağlanacak olan **PolyLocale MODAL**'ın, API endpointinin oluşturulması, database bileşenlerinin oluşturulması ve sisteme entegresi. ERP tarafında yeni **ORM table** yaratılması. Yeni fatura saklama hotspot ve/veya server oluşturulması. EDM tarafında kullanılan **UBL** sürümünün Polonyadaki gibi **2.1** olması/olmaması üzerinde yapılanmanın değiştirilmesi/lokalize edilmesi. Polonya hükümetinin KSeF tarafında düzenlediği hata kodlarının **web services** tarafındaki konfigürasyonu. Temel ve ticari senaryoların uygulanması üzerine irsaliye gibi EDM tarafındaki farklı senaryoların da Polonya tarafına uygulanması. **XAF** ile programlanan **ERP(MVC)** programının Controller API tarafında kullanılacak programlama dilinin seçilmesi/konfigürasyonu.          
+**Sistem üç alandan oluşur:**
 
-İmplementasyon --> Veri Eşleme Stratejisi: Feedback
+> Aynı anda birçok fatura düzenlemenize olanak tanıyan bir dizi işlemden
+oluşan toplu gönderim:
+[`%environment_path%/openapi/gtw/svc/api/KSeF-batch.yaml`](#ksef-ek-2-api)
 
-Yukarıdaki grafikte 
-</swimlanes-io>
+> Kimlik doğrulama gerektirmeden Sisteme erişimi sağlayan genel işlemler:
+[`%environment_path%/openapi/gtw/svc/api/KSeF-common.yaml`](#ksef-ek-1-api)
+
+> Kimlik bilgisi yönetimi, hızlı teslimat, faturaları arama ve bunlara erişme:
+[`%environment_path%/openapi/gtw/svc/api/KSeF-online.yaml`](#ekler)
+
+## E-fatura   
+
+![KSeF Spesifikasyonlar](./_media/roler_structure.png)
 
 
-## Dokümantasyon Yapısı
-
-<h4>PEF taraflı bakış</h4>
+# PEF 
 
 E-fatura gönderilmesi, sipariş işleme sürecinde diğer belgelerin değişiminden önce yapılmalıdır veya ayrı bir faaliyet oluşturabilir. Faturalandırmalarda `UBL 2.1` sürümü kullanılmaktadır. Bu bölüm teknik bilgi içermektedir.
 ve iki faturlandırmadaki 2 ana senaryodan oluşmaktadır:
@@ -239,7 +110,7 @@ Aşağıdaki grafikte iki şirketin bahsi geçen ticaret senaryosu görselleşti
 
 <swimlanes-io>
 EDM Bilişim Sistemleri -> Lojistik ve Depolama Enstitüsü: ERP Cloudy Abonelik Faturası
-Note: Hizmet bedeli için kesilen fatura    
+Note: Hizmet bedeli için kesilen tek KDV oranlı fatura    
 
 Lojistik ve Depolama Enstitüsü --> EDM Bilişim Sistemleri: **Feedback**
 Note: Hizmet bedeli için kesilen faturada feedback olarak Onay veya Red olması durumu   
@@ -274,7 +145,7 @@ Sonuç olarak,
 - Fatura alma sürecinin otomasyonu
 - Fatura işleme otomasyonu (kabul ve muhasebe süreçleri)
 
-?> Bu senaryonun tüm XML dökümantasyonu [EKLER](#ekler) kısmında PolyLocale Ek-1 olarak belirtilmiştir.
+?> Bu senaryonun tüm XML dökümantasyonu [EKLER](#ekler) kısmında Ek-1 olarak belirtilmiştir.
 
 <br>
 
@@ -285,6 +156,17 @@ e-fatura Kullanım Senaryoları 2 - tamamlanan mal teslimatının faturalanması
 Kullanım durumu, bir faturanın Satıcıdan Alıcıya aktarılmasına ilişkin basit bir senaryo ile ilgilidir. Fatura, iki KDV oranı dahil olmak üzere minimum bilgi kümesini içerir.
 
 > En basit durumda Satıcıdan Alıcıya fatura belgesi gönderilebilir ve malın iki KDV oranıyla teslimine ilişkin olabilir. KDV bilgisi belge ve belirli satırlar düzeyinde belirtilir.
+
+Aşağıdaki grafikte iki şirketin bahsi geçen ticaret senaryosu görselleştirilerek anlatılmak istenmiştir.
+
+<swimlanes-io>
+Lojistik ve Depolama Enstitüsü -> EDM Bilişim Sistemleri: toplu Bilgisayar klavyesi satışı için faturalandırma
+Note: Mal bedeli için kesilen iki KDV oranlı fatura    
+
+EDM Bilişim Sistemleri --> Lojistik ve Depolama Enstitüsü: **Feedback**
+Note: Mal bedeli için kesilen faturada feedback olarak Onay veya Red olması durumu   
+
+</swimlanes-io>
 
 ?> Satıcı ( `AccountingSupplierParty` öğesi tarafından tanımlanır) Alıcı ( `AccountingCustomerParty` öğesi tarafından tanımlanır)
 
@@ -312,25 +194,516 @@ Sonuç olarak,
 - Fatura alma sürecinin otomasyonu
 - fatura işleme otomasyonu (kabul ve muhasebe süreçleri)
 
-?> Bu senaryonun tüm XML dökümantasyonu [EKLER](#ekler) kısmında PolyLocale Ek-2 olarak belirtilmiştir.
+?> Bu senaryonun tüm XML dökümantasyonu [EKLER](#ekler) kısmında Ek-2 olarak belirtilmiştir.
 
-<!-- <h5>Referanslar</h5>
+<h4>Yapının ve veri öğelerinin açıklaması</h4>
+
+Bir fatura belgesinin başlangıcında, aşağıdaki şekilde tanımlanan bir dizi kimlik verisi bulunur
+
+```XML
+<cbc:CustomizationID>
+urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0
+</cbc:CustomizationID>
+<cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID> 
+<cbc:ID>INVOICE_PEF_1.0</cbc:ID> 
+<cbc:IssueDate>2018-03-23</cbc:IssueDate>
+<cbc:DueDate>2018-03-23</cbc:DueDate> 
+<cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode> 
+<cbc:Note>sicil mahkemesi, kurucu sermaye, işletme sermayesi</cbc:Note>
+<cbc:TaxPointDate>2018-03-23</cbc:TaxPointDate> 
+<cbc:DocumentCurrencyCode>PLN</cbc:DocumentCurrencyCode> 
+<cbc:TaxCurrencyCode>EUR</cbc:TaxCurrencyCode> 
+<cbc:AccountingCost>maliyetler 123</cbc:AccountingCost> 
+<cbc:BuyerReference>aaa123</cbc:BuyerReference> 
+<cac:InvoicePeriod>
+<cbc:StartDate>2018-03-01</cbc:StartDate> 
+<cbc:EndDate>2018-03-15</cbc:EndDate> 
+<cbc:DescriptionCode>35</cbc:DescriptionCode> 
+</cac:InvoicePeriod>
+```
+
+?> Yukarıda belirtilen elementler ve tanımları
+
+- `CustomizationID` **Mesaj sürümü** spesifikasyon verilerinin uyduğu anlamsal içerik, veri gereksinimleri ve iş kurallarına ilişkin kuralların tam bir açıklamasını içeren spesifikasyonun versiyon 
+tanımlayıcısıdır
+- `ProfileID` **profil tanımlayıcı** belge tarafından gerçekleştirilen iş sürecinin tanımlayıcısı, burada: faturalama
+- `ID` **fatura numarası** faturayı benzersiz bir şekilde tanımlamak için gereken, 2016/112/AB sayılı Direktifin 226(2) Maddesi gerekliliklerine uygun olarak benzersiz, ardışık bir fatura numarası
+- `IssueDate` faturanın düzenlenme tarihi
+- `DueDate` son ödeme tarihi
+- `InvoiceTypeCode` fatura türü tanımlayıcı
+- `Note` faturaya ilişkin metinsel açıklamalar - ör. kayıt verileri, ayrılma bilgileri
+- `TaxPointDate` faturanın düzenlenme tarihinden farklı ise vergi yükümlülüğünün doğduğu tarih
+- `DocumentCurrencyCode` fatura para birimi kodu
+- `TaxCurrencyCode` KDV para birimi kodu
+- `AccountingCost` muhasebe referans numarası (maliyet kalemi)
+- `BuyerReference` alıcı referansı - alıcının dahili amaçlarına yönelik bilgiler
+- `InvoicePeriod` tarih tanılama elementi
+- `StartDate` fatura döneminin başlangıç tarihi
+- `EndDate` fatura döneminin bitiş tarihi
+- `DescriptionCode` vergi hesaplama tarihi kodu (UNTDID 2005'e göre)
+
+<h4>Faturayla ilgili belgelere yapılan atıflar</h4>
+
+- Satın alma sipariş numarası 
+- Sözleşme numarası 
+- Gönderim tavsiye numarası 
+- Makbuz numarasının teyidi 
+- Satıcıya göre sipariş numarası 
+- Teslimat programının numarası 
+- Spesifikasyon numarası (ek ürün açıklamasının)
+
+İlgili dokümanların fatura dokümanına ek olarak gösterilmesi mümkündür.
+
+```XML
+<cac:OrderReference>
+	<cbc:ID>123</cbc:ID> (1)
+
+	<cbc:SalesOrderID>O12345</cbc:SalesOrderID> (2)
+
+</cac:OrderReference>
+<cac:BillingReference>
+	<cac:InvoiceDocumentReference>
+		<cbc:ID>1234</cbc:ID> (3)
+
+		<cbc:IssueDate>2017-06-04</cbc:IssueDate> (4)
+
+	</cac:InvoiceDocumentReference>
+</cac:BillingReference>
+<cac:DespatchDocumentReference>
+	<cbc:ID>1234</cbc:ID> (5)
+
+</cac:DespatchDocumentReference>
+<cac:ReceiptDocumentReference>
+	<cbc:ID>1234</cbc:ID> (6)
+
+</cac:ReceiptDocumentReference>
+<cac:OriginatorDocumentReference>
+	<cbc:ID>1234</cbc:ID> (7)
+
+</cac:OriginatorDocumentReference>
+<cac:ContractDocumentReference>
+	<cbc:ID>Contract321</cbc:ID> (8)
+
+</cac:ContractDocumentReference>
+<cac:AdditionalDocumentReference>
+	<cbc:ID schemeID=" "
+3>1234</cbc:ID> (9)
+
+	<cbc:DocumentTypeCode>270</cbc:DocumentTypeCode> (10)
+
+	<cbc:DocumentDescription> Delivery note </cbc:DocumentDescription> (11)
+
+</cac:AdditionalDocumentReference>
+<cac:ProjectReference>
+	<cbc:ID>Proj1234</cbc:ID> (12)
+
+</cac:ProjectReference>
+```
+
+?> Yukarıda belirtilen elementler ve tanımları
+
+- `OrderReference` `ID` sipariş tanımlayıcı (sayı) 
+- `SalesOrderID`  Satıcıya göre sipariş numarası 
+- `InvoiceDocumentReference` `ID` önceki faturanın numarası (atıfta bulunulan/ilişkili) 
+- `IssueDate` önceki faturanın tarihi (atıfta bulunulan/ilgili) 
+- `DespatchDocumentReference` `ID`sevk ihbar belgesinin numarası 
+- `ReceiptDocumentReference` `ID`alımı teyit eden belgenin numarası 
+- `OriginatorDocumentReference` `ID`bir kamu sözleşmesinin veya faturanın ilgili olduğu bir kısmının yapılmasına ilişkin ihale davet mektubunun numarası/imzası 
+- `ContractDocumentReference` `ID` sözleşme numarası 
+- teslimatı belgeleyen diğer belge sayısı ve belge tanımlama şemasının tanımlayıcısı 
+- `DocumentTypeCode` belge türü kodu (9. öğede belirtilmiştir)
+- `DocumentDescription` belge türünün metinsel açıklaması 
+- `ProjectReference` `ID`faturanın ilgili olduğu projenin tanımlayıcısı
+
+<h5>Referanslar</h5>
 
 - [Şuanki PEPPOL BIS 3.0 faturalandırma sürümü - 3.0.9](https://docs.peppol.eu/poacc/billing/3.0/)
 
 - [e-faturanın bilgi unsurlarının tam listesi ve bunların nitelikleri bu adreste bulunabilir](https://docs.peppol.eu/poacc/billing/3.0/syntax/ubl-invoice/tree/)
 
 - [`Namespace`'lerin açıklamalarına bu linkten ulaşılabilir](https://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/maindoc/UBL-Invoice-2.1.xsd) 
--->
-## Veri Haritalama ve Dönüştürme
 
-## Hata İşleme
+# Ekler 
 
-## Test Prosedürleri
+# <!-- {docsify-ignore} -->
 
-## Ekler
+### KSeF EK-1 API
 
-[PolyLocale Ek-1](#dokümantasyon-yapısı) Hizmetlere ilişkin fatura belgesi örneği:
+```yaml
+openapi: 3.0.1
+info:
+  contact:
+    email: info.ksef@mf.gov.pl
+    name: Info
+    url: https://ksef.mf.gov.pl
+  description: Krajowy System e-Faktur
+  title: KSeF
+  version: 2.0.4
+externalDocs:
+  description: Dökümantasyon
+  url: https://www.gov.pl/web/kas/krajowy-system-e-faktur
+servers:
+- description: Üretim ortamı
+  url: https://ksef.mf.gov.pl/api
+  variables: {}
+- description: Gösteri ortamı
+  url: https://ksef-demo.mf.gov.pl/api
+  variables: {}
+- description: Test ortamı
+  url: https://ksef-test.mf.gov.pl/api
+  variables: {}
+tags:
+- description: Ulusal e-Fatura Sistemi
+  externalDocs:
+    description: Ulusal e-Fatura Sistemi
+    url: https://ksef.mf.gov.pl
+  name: KSeF
+paths:
+  /common/Invoice/KSeF:
+    post:
+      description: KSeF havuzundan bir faturanın aşağıdaki kriterlere dayalı olarak alınması
+        KSeF numarasına göre
+      operationId: common.invoice.ksef
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvoiceRequestKSeF'
+        required: true
+      responses:
+        "200":
+          content:
+            application/octet-stream:
+              schema:
+                type: object
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExceptionResponse'
+          description: Yanlış arama
+        "404":
+          content:
+            application/json: {}
+          description: Aranan içerik bulunamadı
+      summary: KSeF havuzundan bir fatura indirme - KSeF numarasına dayalı kriterler
+      tags:
+      - Ortak arayüzler - fatura indirme
+  /common/Status/{ReferenceNumber}:
+    get:
+      description: Toplu işlem durumunu kontrol etme
+      operationId: common.status
+      parameters:
+      - in: path
+        name: ReferenceNumber
+        required: true
+        schema:
+          type: string
+          pattern: "(20[2-9][0-9]|2[1-9][0-9]{2}|[3-9][0-9]{3})(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])-([0-9A-Z]{2})-([0-9A-F]{10})-([0-9A-F]{10})-([0-9A-F]{2})"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusResponse'
+            application/vnd.v3+json:
+              schema:
+                $ref: '#/components/schemas/V3_StatusResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExceptionResponse'
+          description: Yanlış arama
+      summary: Toplu işlem durumunu indirmek için ortak arayüz
+      tags:
+      - Ortak arayüzler - status
+  /common/Upo/{ReferenceNumber}/{UpoReferenceNumber}:
+    get:
+      description: UPO'yu İndirme
+      operationId: common.upo
+      parameters:
+      - in: path
+        name: ReferenceNumber
+        required: true
+        schema:
+          type: string
+          pattern: "(20[2-9][0-9]|2[1-9][0-9]{2}|[3-9][0-9]{3})(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])-([0-9A-Z]{2})-([0-9A-F]{10})-([0-9A-F]{10})-([0-9A-F]{2})"
+      - in: path
+        name: UpoReferenceNumber
+        required: true
+        schema:
+          type: string
+          pattern: "(20[2-9][0-9]|2[1-9][0-9]{2}|[3-9][0-9]{3})(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])-([0-9A-Z]{2})-([0-9A-F]{10})-([0-9A-F]{10})-([0-9A-F]{2})"
+      responses:
+        "200":
+          content:
+            application/vnd.v3+octet-stream:
+              schema:
+                type: object
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExceptionResponse'
+          description: Yanlış arama
+        "404":
+          content:
+            application/json: {}
+          description: Aranan içerik bulunamadı
+      summary: UPO ortak indirme arayüzü
+      tags:
+      - Ortak arayüzler - UPO
+components:
+  schemas:
+    AnonymousSubjectIdentifierToCompanyType:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/AnonymousSubjectIdentifierToType'
+      - type: object
+        properties:
+          identifier:
+            type: string
+            pattern: "[1-9]((\\d[1-9])|([1-9]\\d))\\d{7}"
+      required:
+      - identifier
+    AnonymousSubjectIdentifierToNoneType:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/AnonymousSubjectIdentifierToType'
+    AnonymousSubjectIdentifierToOtherTaxType:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/AnonymousSubjectIdentifierToType'
+      - type: object
+        properties:
+          identifier:
+            type: string
+            maxLength: 50
+            minLength: 1
+      required:
+      - identifier
+    AnonymousSubjectIdentifierToType:
+      type: object
+      discriminator:
+        mapping:
+          none: '#/components/schemas/AnonymousSubjectIdentifierToNoneType'
+          onip: '#/components/schemas/AnonymousSubjectIdentifierToCompanyType'
+          other: '#/components/schemas/AnonymousSubjectIdentifierToOtherTaxType'
+        propertyName: type
+      properties:
+        type:
+          type: string
+      required:
+      - type
+    AnonymousSubjectToType:
+      type: object
+      properties:
+        issuedToIdentifier:
+          $ref: '#/components/schemas/AnonymousSubjectIdentifierToType'
+        issuedToName:
+          $ref: '#/components/schemas/SubjectNameType'
+      required:
+      - issuedToIdentifier
+      - issuedToName
+    ExceptionDetailType:
+      type: object
+      properties:
+        exceptionCode:
+          type: integer
+          format: int32
+          minimum: 0
+        exceptionDescription:
+          type: string
+          maxLength: 256
+          minLength: 1
+      required:
+      - exceptionCode
+      - exceptionDescription
+    ExceptionResponse:
+      type: object
+      properties:
+        exception:
+          $ref: '#/components/schemas/ExceptionType'
+      required:
+      - exception
+    ExceptionType:
+      type: object
+      properties:
+        exceptionDetailList:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExceptionDetailType'
+          maxItems: 100
+          minItems: 1
+        referenceNumber:
+          type: string
+          pattern: "(20[2-9][0-9]|2[1-9][0-9]{2}|[3-9][0-9]{3})(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])-([0-9A-Z]{2})-([0-9A-F]{10})-([0-9A-F]{10})-([0-9A-F]{2})"
+        serviceCode:
+          type: string
+          maxLength: 64
+          minLength: 1
+        serviceCtx:
+          type: string
+          maxLength: 64
+          minLength: 1
+        serviceName:
+          type: string
+          maxLength: 64
+          minLength: 1
+        timestamp:
+          type: string
+          format: date-time
+      required:
+      - exceptionDetailList
+      - serviceCode
+      - serviceCtx
+      - serviceName
+      - timestamp
+    InvoiceQueryDetailsType:
+      type: object
+      properties:
+        dueValue:
+          type: string
+          pattern: "(\\-)?\\d{1,10}(\\.\\d{2})?"
+        invoiceOryginalNumber:
+          type: string
+          maxLength: 256
+          minLength: 1
+        subjectTo:
+          $ref: '#/components/schemas/AnonymousSubjectToType'
+      required:
+      - dueValue
+      - invoiceOryginalNumber
+      - subjectTo
+    InvoiceRequestKSeF:
+      type: object
+      properties:
+        invoiceDetails:
+          $ref: '#/components/schemas/InvoiceQueryDetailsType'
+        ksefReferenceNumber:
+          type: string
+          pattern: "([1-9]((\\d[1-9])|([1-9]\\d))\\d{7}|M\\d{9}|[A-Z]{3}\\d{7})-(20[2-9][0-9]|2[1-9][0-9]{2}|[3-9][0-9]{3})(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])-([0-9A-F]{6})-?([0-9A-F]{6})-([0-9A-F]{2})"
+      required:
+      - invoiceDetails
+      - ksefReferenceNumber
+    StatusResponse:
+      type: object
+      properties:
+        processingCode:
+          type: integer
+          format: int32
+          maximum: 999
+          minimum: 100
+        processingDescription:
+          type: string
+          maxLength: 256
+          minLength: 1
+        referenceNumber:
+          type: string
+          pattern: "(20[2-9][0-9]|2[1-9][0-9]{2}|[3-9][0-9]{3})(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])-([0-9A-Z]{2})-([0-9A-F]{10})-([0-9A-F]{10})-([0-9A-F]{2})"
+        timestamp:
+          type: string
+          format: date-time
+        upo:
+          type: string
+          format: binary
+      required:
+      - processingCode
+      - processingDescription
+      - referenceNumber
+      - timestamp
+    SubjectFullNameType:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/SubjectNameType'
+      - type: object
+        properties:
+          fullName:
+            type: string
+            maxLength: 256
+            minLength: 1
+      required:
+      - fullName
+    SubjectNameType:
+      type: object
+      discriminator:
+        mapping:
+          fn: '#/components/schemas/SubjectFullNameType'
+          none: '#/components/schemas/SubjectNoneType'
+          pn: '#/components/schemas/SubjectPersonNameType'
+        propertyName: type
+      properties:
+        tradeName:
+          type: string
+          maxLength: 256
+          minLength: 1
+          nullable: true
+        type:
+          type: string
+      required:
+      - type
+    SubjectNoneType:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/SubjectNameType'
+    SubjectPersonNameType:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/SubjectNameType'
+      - type: object
+        properties:
+          firstName:
+            type: string
+            maxLength: 30
+            minLength: 1
+          surname:
+            type: string
+            maxLength: 81
+            minLength: 1
+      required:
+      - firstName
+      - surname
+    V3_StatusResponse:
+      type: object
+      properties:
+        processingCode:
+          type: integer
+          format: int32
+          maximum: 999
+          minimum: 100
+        processingDescription:
+          type: string
+          maxLength: 256
+          minLength: 1
+        referenceNumber:
+          type: string
+          pattern: "(20[2-9][0-9]|2[1-9][0-9]{2}|[3-9][0-9]{3})(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])-([0-9A-Z]{2})-([0-9A-F]{10})-([0-9A-F]{10})-([0-9A-F]{2})"
+        timestamp:
+          type: string
+          format: date-time
+        upoReferenceNumber:
+          type: string
+          pattern: "(20[2-9][0-9]|2[1-9][0-9]{2}|[3-9][0-9]{3})(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])-([0-9A-Z]{2})-([0-9A-F]{10})-([0-9A-F]{10})-([0-9A-F]{2})"
+        upoUrl:
+          type: string
+          maxLength: 512
+          minLength: 1
+          pattern: "http[s]?:\\/{2}([0-9a-z][0-9a-z_-]*\\.)+[0-9a-z][0-9a-z_-]*(([0-9a-zA-Z][0-9a-zA-Z_-]*\\\
+            .?)*\\/?)*"
+      required:
+      - processingCode
+      - processingDescription
+      - referenceNumber
+      - timestamp
+```
+
+### KSeF EK-2 API
+
+[Ek-1](#dokümantasyon-yapısı) Hizmetlere ilişkin fatura belgesi örneği:
 
 ```XML
 <?xml version="1.0" encoding="UTF-8"?>
@@ -345,7 +718,7 @@ Sonuç olarak,
 urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0
 </cbc:CustomizationID>
 	<cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
-	<cbc:ID>NVOICE_PeF_1.0</cbc:ID>
+	<cbc:ID>INVOICE_PeF_1.0</cbc:ID>
 	<cbc:IssueDate>2018-04-10</cbc:IssueDate>
 	<cbc:DueDate>2018-04-23</cbc:DueDate>
 	<cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
@@ -367,7 +740,7 @@ urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0
 		<cac:Party>
 			<cbc:EndpointID schemeID="0088">5790989675432</cbc:EndpointID>
 			<cac:PartyName>
-				<cbc:Name>Empik</cbc:Name>
+				<cbc:Name>EDM</cbc:Name>
 			</cac:PartyName>
 			<cac:PostalAddress>
 				<cbc:StreetName>Cumhuriyet Mah.</cbc:StreetName>
@@ -380,7 +753,7 @@ urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0
 			<cac:PartyTaxScheme>
 				<cbc:CompanyID>PL5260207427</cbc:CompanyID>
 				<cac:TaxScheme>
-					<cbc:ID>VAT</cbc:ID>
+					<cbc:ID>KDV</cbc:ID>
 				</cac:TaxScheme>
 			</cac:PartyTaxScheme>
 			<cac:PartyLegalEntity>
@@ -464,7 +837,7 @@ urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0
 				<cbc:ID>S</cbc:ID>
 				<cbc:Percent>5</cbc:Percent>
 				<cac:TaxScheme>
-					<cbc:ID>VAT</cbc:ID>
+					<cbc:ID>KDV</cbc:ID>
 				</cac:TaxScheme>
 			</cac:ClassifiedTaxCategory>
 		</cac:Item>
@@ -477,7 +850,7 @@ urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0
 
 <br>
 
-[PolyLocale Ek-2](#dokümantasyon-yapısı) tamamlanan mal teslimatına ilişkin fatura belgesi örneği:
+[Ek-2](#dokümantasyon-yapısı) tamamlanan mal teslimatına ilişkin fatura belgesi örneği:
 
 ```XML
 <?xml version="1.0" encoding="UTF-8"?>
@@ -496,7 +869,7 @@ urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0
 	<cbc:IssueDate>2018-04-10</cbc:IssueDate>
 	<cbc:DueDate>2018-04-23</cbc:DueDate>
 	<cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
-	<cbc:Note>Kontrakt podpisany poprzez stronę internetową</cbc:Note>
+	<cbc:Note>Sözleşme internet sitesi üzerinden imzalandı</cbc:Note>
 	<cbc:DocumentCurrencyCode>PLN</cbc:DocumentCurrencyCode>
 	<cac:OrderReference>
 		<cbc:ID>Z123</cbc:ID>
@@ -526,7 +899,7 @@ urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0
 				<cbc:CompanyID>PL0001151819</cbc:CompanyID>
 			</cac:PartyLegalEntity>
 			<cac:Contact>
-				<cbc:Name>Imię Nazwisko</cbc:Name>
+				<cbc:Name>İsim soyisim</cbc:Name>
 				<cbc:Telephone>+4898989898</cbc:Telephone>
 				<cbc:ElectronicMail>office@empik.pl</cbc:ElectronicMail>
 			</cac:Contact>
@@ -536,7 +909,7 @@ urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0
 		<cac:Party>
 			<cbc:EndpointID schemeID="0088">5790000436057</cbc:EndpointID>
 			<cac:PartyName>
-				<cbc:Name>Instytut Logistyki i Magazynowania</cbc:Name>
+				<cbc:Name>Lojistik ve Depolama Enstitüsü</cbc:Name>
 			</cac:PartyName>
 			<cac:PostalAddress>
 				<cbc:StreetName>Estkowskiego 6</cbc:StreetName>
@@ -547,11 +920,10 @@ urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0
 				</cac:Country>
 			</cac:PostalAddress>
 			<cac:PartyLegalEntity>
-				<cbc:RegistrationName>Sieć Badawcza Łukasiewicz. Instytut Logistyki i
-Magazynowania </cbc:RegistrationName>
+				<cbc:RegistrationName>Łukasiewicz Araştırma Ağı. Lojistik ve Depolama Enstitüsü</cbc:RegistrationName>
 			</cac:PartyLegalEntity>
 			<cac:Contact>
-				<cbc:Name>Imię Nazwisko</cbc:Name>
+				<cbc:Name>İsim soyisim</cbc:Name>
 			</cac:Contact>
 		</cac:Party>
 	</cac:AccountingCustomerParty>
@@ -601,7 +973,7 @@ Magazynowania </cbc:RegistrationName>
 		<cbc:InvoicedQuantity unitCode="C62">1000</cbc:InvoicedQuantity>
 		<cbc:LineExtensionAmount currencyID="PLN">1000.00</cbc:LineExtensionAmount>
 		<cac:Item>
-			<cbc:Description>Papier do drukarek A4, 2mm</cbc:Description>
+			<cbc:Description>A4 yazıcı kağıdı, 2mm</cbc:Description>
 			<cbc:Name>Papier A4</cbc:Name>
 			<cac:SellersItemIdentification>
 				<cbc:ID>JB007</cbc:ID>
@@ -623,8 +995,8 @@ Magazynowania </cbc:RegistrationName>
 		<cbc:InvoicedQuantity unitCode="C62">100</cbc:InvoicedQuantity>
 		<cbc:LineExtensionAmount currencyID="PLN">500.00</cbc:LineExtensionAmount>
 		<cac:Item>
-			<cbc:Description>Długopis z tuszem czarnym</cbc:Description>
-			<cbc:Name>Długopis XXL</cbc:Name>
+			<cbc:Description>Siyah mürekkepli tükenmez kalem</cbc:Description>
+			<cbc:Name>XXL tükenmez kalem</cbc:Name>
 			<cac:SellersItemIdentification>
 				<cbc:ID>JB008</cbc:ID>
 			</cac:SellersItemIdentification>
@@ -644,9 +1016,12 @@ Magazynowania </cbc:RegistrationName>
 
 ```
 
-## Versiyon Kontrol
+# Versiyon Kontrol
+`1.1`
 
-`PolyLocale 1.0` 
+- **11/10/2023 API Bölümlerinin tanımlanması theme'in değiştirilmesi: _BURAK BILEN_**
 
-- **11/02/2023 MVP beta  dökümantasyonu contributor _BURAK BILEN_**
+`1.0` 
+
+- **11/02/2023 BETA dökümantasyonun oluşturulması _BURAK BILEN_**
 
