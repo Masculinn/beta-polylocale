@@ -178,7 +178,7 @@ Varlık hesabı(Podmiot) üzerinden oturum açılarak oluşturulan fatura tipler
 
 ?> Kalan diyagram yapıları eklenilecektir.
 
-### XML şeması (Örnek üzerinde) 
+### XML şemaları (Örnek üzerinde) 
 
 ?> Temel senaryoda kesilmiş faturanın `PDF` görüntüsü.
 ![pdf-faktura-pdf](./_media/xml_extract_einvoice_edited.png)
@@ -282,6 +282,927 @@ B Blok No:27/14 Güngören / İstanbul - TURKEY</AdresL1>
 	</Fa>
 </Faktura>
 ```
+
+####  <!-- {docsify-ignore} -->
+
+<h3>XML Fatura Şemaları</h3>
+
+<br>
+
+**Ticari mal satış faturası**
+> Mallar için satış faturası. Fatura, düzenlendiği tarihte ödemenin tamamının yapıldığını belirtmektedir.
+
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<Faktura xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2022/01/05/eD/DefinicjeTypy/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://crd.gov.pl/wzor/2023/06/29/12648/">
+	<Naglowek>
+		<KodFormularza kodSystemowy="FA (2)" wersjaSchemy="1-0E">FA</KodFormularza>
+		<WariantFormularza>2</WariantFormularza>
+		<DataWytworzeniaFa>2022-01-01T00:00:00Z</DataWytworzeniaFa>
+		<SystemInfo>Kesilen Faturanın platformu</SystemInfo>
+	</Naglowek>
+	<Podmiot1>
+		<DaneIdentyfikacyjne>
+			<NIP>9999999999</NIP>
+			<Nazwa>ABC AGD sp. z o. o.</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Kwiatowa 1 m. 2</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>abc@abc.pl</Email>
+			<Telefon>667444555</Telefon>
+		</DaneKontaktowe>
+	</Podmiot1>
+	<Podmiot2>
+		<DaneIdentyfikacyjne>
+			<NIP>1111111111</NIP>
+			<Nazwa>F.H.U. Jan Kowalski</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Polna 1</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>jan@kowalski.pl</Email>
+			<Telefon>555777999</Telefon>
+		</DaneKontaktowe>
+		<NrKlienta>fdfd778343</NrKlienta>
+	</Podmiot2>
+	<Fa>
+		<KodWaluty>PLN</KodWaluty>
+		<P_1>2022-02-15</P_1>
+		<P_1M>Warszawa</P_1M>
+		<P_2>FV2022/02/150</P_2>
+		<P_6>2022-01-27</P_6>
+		<P_13_1>1666.66</P_13_1>
+		<P_14_1>383.33</P_14_1>
+		<P_13_3>0.95</P_13_3>
+		<P_14_3>0.05</P_14_3>
+		<P_15>2051</P_15>
+		<Adnotacje>
+			<P_16>2</P_16>
+			<P_17>2</P_17>
+			<P_18>2</P_18>
+			<P_18A>2</P_18A>
+			<Zwolnienie>
+				<P_19N>1</P_19N>
+			</Zwolnienie>
+			<NoweSrodkiTransportu>
+				<P_22N>1</P_22N>
+			</NoweSrodkiTransportu>
+			<P_23>2</P_23>
+			<PMarzy>
+				<P_PMarzyN>1</P_PMarzyN>
+			</PMarzy>
+		</Adnotacje>
+		<RodzajFaktury>VAT</RodzajFaktury>
+		<FP>1</FP>
+		<DodatkowyOpis>
+			<Klucz>tercih edilen teslimat süreleri</Klucz>
+			<Wartosc>çalışma günleri 17:00 - 20:00</Wartosc>
+		</DodatkowyOpis>
+		<FaWiersz>
+			<NrWierszaFa>1</NrWierszaFa>
+			<UU_ID>aaaa111133339990</UU_ID>
+			<P_7>lodówka Zimnotech mk1</P_7>
+			<P_8A>szt.</P_8A>
+			<P_8B>1</P_8B>
+			<P_9A>1626.01</P_9A>
+			<P_11>1626.01</P_11>
+			<P_12>23</P_12>
+		</FaWiersz>
+		<FaWiersz>
+			<NrWierszaFa>2</NrWierszaFa>
+			<UU_ID>aaaa111133339991</UU_ID>
+			<P_7>ekipmanın getirilmesi</P_7>
+			<P_8A>szt.</P_8A>
+			<P_8B>1</P_8B>
+			<P_9A>40.65</P_9A>
+			<P_11>40.65</P_11>
+			<P_12>23</P_12>
+		</FaWiersz>
+		<FaWiersz>
+			<NrWierszaFa>3</NrWierszaFa>
+			<UU_ID>aaaa111133339992</UU_ID>
+			<P_7>süt dolu promosyon buzdolabı</P_7>
+			<P_8A>szt.</P_8A>
+			<P_8B>1</P_8B>
+			<P_9A>0.95</P_9A>
+			<P_11>0.95</P_11>
+			<P_12>5</P_12>
+		</FaWiersz>
+		<Platnosc>
+			<Zaplacono>1</Zaplacono>
+			<DataZaplaty>2022-01-27</DataZaplaty>
+			<FormaPlatnosci>6</FormaPlatnosci>
+		</Platnosc>
+		<WarunkiTransakcji>
+			<Zamowienia>
+				<DataZamowienia>2022-01-26</DataZamowienia>
+				<NrZamowienia>4354343</NrZamowienia>
+			</Zamowienia>
+		</WarunkiTransakcji>
+	</Fa>
+	<Stopka>
+		<Informacje>
+			<StopkaFaktury>Sermaye 5.000.000</StopkaFaktury>
+		</Informacje>
+		<Rejestry>
+			<KRS>0000099999</KRS>
+			<REGON>999999999</REGON>
+			<BDO>000099999</BDO>
+		</Rejestry>
+	</Stopka>
+</Faktura>
+```
+
+<br>
+
+**Örnek 1'deki düzeltme satış faturası.** Düzeltme öncesi ve sonrası durumun ayrı satırlar olarak sunulduğu faturalar.
+
+?> Belirli bir kalem için fiyatı düşüren düzeltme faturası. Belirli bir satır için düzeltme faturasında iki satır sağlar. İlk satır düzeltmeden önceki durumu gösterir ve `StanPrzed` etiketi ile işaretlenir. İkinci satır düzeltmeden sonraki doğru değeri gösterir. Önceki ve sonraki satırlar ayrı numaralandırmaya sahiptir.
+
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<Faktura xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2022/01/05/eD/DefinicjeTypy/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://crd.gov.pl/wzor/2023/06/29/12648/">
+	<Naglowek>
+		<KodFormularza kodSystemowy="FA (2)" wersjaSchemy="1-0E">FA</KodFormularza>
+		<WariantFormularza>2</WariantFormularza>
+		<DataWytworzeniaFa>2022-01-01T00:00:00Z</DataWytworzeniaFa>
+		<SystemInfo>SamploFaktur</SystemInfo>
+	</Naglowek>
+	<Podmiot1>
+		<DaneIdentyfikacyjne>
+			<NIP>9999999999</NIP>
+			<Nazwa>ABC AGD sp. z o. o.</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Kwiatowa 1 m. 2</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>abc@abc.pl</Email>
+			<Telefon>667444555</Telefon>
+		</DaneKontaktowe>
+	</Podmiot1>
+	<Podmiot2>
+		<DaneIdentyfikacyjne>
+			<NIP>1111111111</NIP>
+			<Nazwa>F.H.U. Jan Kowalski</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Polna 1</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>jan@kowalski.pl</Email>
+			<Telefon>555777999</Telefon>
+		</DaneKontaktowe>
+		<NrKlienta>fdfd778343</NrKlienta>
+	</Podmiot2>
+	<Fa>
+		<KodWaluty>PLN</KodWaluty>
+		<P_1>2022-03-15</P_1>
+		<P_1M>Warszawa</P_1M>
+		<P_2>FK2022/03/200</P_2>
+		<P_6>2022-01-27</P_6>
+		<P_13_1>-162.60</P_13_1>
+		<P_14_1>-37.40</P_14_1>
+		<P_15>-200</P_15>
+		<Adnotacje>
+			<P_16>2</P_16>
+			<P_17>2</P_17>
+			<P_18>2</P_18>
+			<P_18A>2</P_18A>
+			<Zwolnienie>
+				<P_19N>1</P_19N>
+			</Zwolnienie>
+			<NoweSrodkiTransportu>
+				<P_22N>1</P_22N>
+			</NoweSrodkiTransportu>
+			<P_23>2</P_23>
+			<PMarzy>
+				<P_PMarzyN>1</P_PMarzyN>
+			</PMarzy>
+		</Adnotacje>
+		<RodzajFaktury>KOR</RodzajFaktury>
+		<PrzyczynaKorekty>Estetik hasar nedeniyle fiyatta 200 PLN indirim</PrzyczynaKorekty>
+		<TypKorekty>3</TypKorekty>
+		<DaneFaKorygowanej>
+			<DataWystFaKorygowanej>2022-02-15</DataWystFaKorygowanej>
+			<NrFaKorygowanej>FV2022/02/150</NrFaKorygowanej>
+			<NrKSeF>1</NrKSeF>
+			<NrKSeFFaKorygowanej>9999999999-20230908-8BEF280C8D35-4D</NrKSeFFaKorygowanej>
+		</DaneFaKorygowanej>
+		<FaWiersz>
+			<NrWierszaFa>1</NrWierszaFa>
+			<UU_ID>aaaa111133339990</UU_ID>
+			<P_7>buzdolabı Zimnotech mk1</P_7>
+			<P_8A>szt.</P_8A>
+			<P_8B>1</P_8B>
+			<P_9A>1626.01</P_9A>
+			<P_11>1626.01</P_11>
+			<P_12>23</P_12>
+			<StanPrzed>1</StanPrzed>
+		</FaWiersz>
+		<FaWiersz>
+			<NrWierszaFa>1</NrWierszaFa>
+			<UU_ID>aaaa111133339990</UU_ID>
+			<P_7>buzdolabı Zimnotech mk1</P_7>
+			<P_8A>szt.</P_8A>
+			<P_8B>1</P_8B>
+			<P_9A>1463.41</P_9A>
+			<P_11>1463.41</P_11>
+			<P_12>23</P_12>
+		</FaWiersz>
+	</Fa>
+	<Stopka>
+		<Informacje>
+			<StopkaFaktury>Sermaye 5.000.000</StopkaFaktury>
+		</Informacje>
+		<Rejestry>
+			<KRS>0000099999</KRS>
+			<REGON>999999999</REGON>
+			<BDO>000099999</BDO>
+		</Rejestry>
+	</Stopka>
+</Faktura>
+
+```
+
+<br>
+
+**Örnek 1'deki düzeltici satış faturası.** Yöntem farka göre düzeltme.
+
+?> Belirli bir kalem için fiyatı düşüren düzeltme faturası. Belirli bir mal kalemi için fiyatı düşüren düzeltme faturası. Farka göre bir giriş sunarak alternatif düzeltme yöntemi. Bu yöntem, yanlış uygulanan bir vergi oranını düzeltmek için önerilmez.
+
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<Faktura xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2022/01/05/eD/DefinicjeTypy/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://crd.gov.pl/wzor/2023/06/29/12648/">
+	<Naglowek>
+		<KodFormularza kodSystemowy="FA (2)" wersjaSchemy="1-0E">FA</KodFormularza>
+		<WariantFormularza>2</WariantFormularza>
+		<DataWytworzeniaFa>2022-01-01T00:00:00Z</DataWytworzeniaFa>
+		<SystemInfo>SamploFaktur</SystemInfo>
+	</Naglowek>
+	<Podmiot1>
+		<DaneIdentyfikacyjne>
+			<NIP>9999999999</NIP>
+			<Nazwa>ABC AGD sp. z o. o.</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Kwiatowa 1 m. 2</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>abc@abc.pl</Email>
+			<Telefon>667444555</Telefon>
+		</DaneKontaktowe>
+	</Podmiot1>
+	<Podmiot2>
+		<DaneIdentyfikacyjne>
+			<NIP>1111111111</NIP>
+			<Nazwa>F.H.U. Jan Kowalski</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Polna 1</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>jan@kowalski.pl</Email>
+			<Telefon>555777999</Telefon>
+		</DaneKontaktowe>
+		<NrKlienta>fdfd778343</NrKlienta>
+	</Podmiot2>
+	<Fa>
+		<KodWaluty>PLN</KodWaluty>
+		<P_1>2022-03-15</P_1>
+		<P_1M>Warszawa</P_1M>
+		<P_2>FK2022/03/200</P_2>
+		<P_6>2022-01-27</P_6>
+		<P_13_1>-162.60</P_13_1>
+		<P_14_1>-37.40</P_14_1>
+		<P_15>-200</P_15>
+		<Adnotacje>
+			<P_16>2</P_16>
+			<P_17>2</P_17>
+			<P_18>2</P_18>
+			<P_18A>2</P_18A>
+			<Zwolnienie>
+				<P_19N>1</P_19N>
+			</Zwolnienie>
+			<NoweSrodkiTransportu>
+				<P_22N>1</P_22N>
+			</NoweSrodkiTransportu>
+			<P_23>2</P_23>
+			<PMarzy>
+				<P_PMarzyN>1</P_PMarzyN>
+			</PMarzy>
+		</Adnotacje>
+		<RodzajFaktury>KOR</RodzajFaktury>
+		<PrzyczynaKorekty>obniżka ceny o 200 zł z uwagi na uszkodzenia estetyczne</PrzyczynaKorekty>
+		<TypKorekty>3</TypKorekty>
+		<DaneFaKorygowanej>
+			<DataWystFaKorygowanej>2022-02-15</DataWystFaKorygowanej>
+			<NrFaKorygowanej>FV2022/02/150</NrFaKorygowanej>
+			<NrKSeF>1</NrKSeF>
+			<NrKSeFFaKorygowanej>9999999999-20230908-8BEF280C8D35-4D</NrKSeFFaKorygowanej>
+		</DaneFaKorygowanej>
+		<FaWiersz>
+			<NrWierszaFa>1</NrWierszaFa>
+			<UU_ID>aaaa111133339990</UU_ID>
+			<P_7>lodówka Zimnotech mk1</P_7>
+			<P_8A>szt.</P_8A>
+			<P_8B>1</P_8B>
+			<P_9A>-162.60</P_9A>
+			<P_11>-162.60</P_11>
+			<P_12>23</P_12>
+		</FaWiersz>
+	</Fa>
+	<Stopka>
+		<Informacje>
+			<StopkaFaktury>Kapiał zakładowy 5 000 000</StopkaFaktury>
+		</Informacje>
+		<Rejestry>
+			<KRS>0000099999</KRS>
+			<REGON>999999999</REGON>
+			<BDO>000099999</BDO>
+		</Rejestry>
+	</Stopka>
+</Faktura>
+
+```
+
+<br>
+
+**Toptan satış faturası.** Faturada faktör ve taşıyıcı yer alır.
+
+?> Mallar için toptan satış faturası. Örnekte, bir faktör ve bir taşıyıcı vardır. Her bir fatura kalemi için farklı teslim tarihleri vardır.Fatura Üzerinde, tutarın tamamı için tek bir ödeme vadesi belirlenmiştir.
+
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<Faktura xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2022/01/05/eD/DefinicjeTypy/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://crd.gov.pl/wzor/2023/06/29/12648/">
+	<Naglowek>
+		<KodFormularza kodSystemowy="FA (2)" wersjaSchemy="1-0E">FA</KodFormularza>
+		<WariantFormularza>2</WariantFormularza>
+		<DataWytworzeniaFa>2022-02-15T09:30:47Z</DataWytworzeniaFa>
+		<SystemInfo>Samplofaktur</SystemInfo>
+	</Naglowek>
+	<Podmiot1>
+		<DaneIdentyfikacyjne>
+			<NIP>9999999999</NIP>
+			<Nazwa>ABC AGD sp. z o. o.</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Kwiatowa 1 m. 2</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>abc@abc.pl</Email>
+			<Telefon>667444555</Telefon>
+		</DaneKontaktowe>
+	</Podmiot1>
+	<Podmiot2>
+		<DaneIdentyfikacyjne>
+			<NIP>1111111111</NIP>
+			<Nazwa>CDE sp. j.</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Sadowa 1 lok. 3</AdresL1>
+			<AdresL2>00-002 Kraków</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>cde@cde.pl</Email>
+			<Telefon>555777999</Telefon>
+		</DaneKontaktowe>
+		<NrKlienta>fdfd778343</NrKlienta>
+	</Podmiot2>
+	<Podmiot3>
+		<DaneIdentyfikacyjne>
+			<NIP>2222222222</NIP>
+			<Nazwa>Bank Bankowości Bankowej S. A. BBB Faktoring</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Bankowa 1</AdresL1>
+			<AdresL2>00-003 Łódź</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>bbb@efaktoring.pl</Email>
+			<Telefon>666888999</Telefon>
+		</DaneKontaktowe>
+		<Rola>1</Rola>
+	</Podmiot3>
+	<Fa>
+		<KodWaluty>PLN</KodWaluty>
+		<P_1>2022-02-15</P_1>
+		<P_1M>Warszawa</P_1M>
+		<P_2>FV2022/02/150</P_2>
+		<WZ>44343434/2022</WZ>
+		<P_13_1>52260.10</P_13_1>
+		<P_14_1>12019.82</P_14_1>
+		<P_15>64279.92</P_15>
+		<Adnotacje>
+			<P_16>2</P_16>
+			<P_17>2</P_17>
+			<P_18>2</P_18>
+			<P_18A>2</P_18A>
+			<Zwolnienie>
+				<P_19N>1</P_19N>
+			</Zwolnienie>
+			<NoweSrodkiTransportu>
+				<P_22N>1</P_22N>
+			</NoweSrodkiTransportu>
+			<P_23>2</P_23>
+			<PMarzy>
+				<P_PMarzyN>1</P_PMarzyN>
+			</PMarzy>
+		</Adnotacje>
+		<RodzajFaktury>VAT</RodzajFaktury>
+		<FaWiersz>
+			<NrWierszaFa>1</NrWierszaFa>
+			<UU_ID>aaaa111133339990</UU_ID>
+			<P_6A>2022-01-03</P_6A>
+			<P_7>lodówka Zimnotech mk1</P_7>
+			<CN>8418 21 91</CN>
+			<P_8A>szt.</P_8A>
+			<P_8B>10</P_8B>
+			<P_9A>1626.01</P_9A>
+			<P_11>16260.10</P_11>
+			<P_12>23</P_12>
+		</FaWiersz>
+		<FaWiersz>
+			<NrWierszaFa>2</NrWierszaFa>
+			<UU_ID>aaaa111133339991</UU_ID>
+			<P_6A>2022-01-10</P_6A>
+			<P_7>zamrażarka Zimnotech mk2</P_7>
+			<CN>8418 40 20</CN>
+			<P_8A>szt.</P_8A>
+			<P_8B>20</P_8B>
+			<P_9A>1000</P_9A>
+			<P_10>100</P_10>
+			<P_11>18000</P_11>
+			<P_12>23</P_12>
+		</FaWiersz>
+		<FaWiersz>
+			<NrWierszaFa>3</NrWierszaFa>
+			<UU_ID>aaaa111133339992</UU_ID>
+			<P_6A>2022-01-15</P_6A>
+			<P_7>zmywarka Bryza 100</P_7>
+			<CN>8422 11 00</CN>
+			<P_8A>szt.</P_8A>
+			<P_8B>15</P_8B>
+			<P_9A>1200</P_9A>
+			<P_11>18000</P_11>
+			<P_12>23</P_12>
+		</FaWiersz>
+		<Rozliczenie>
+			<Odliczenia>
+				<Kwota>1000</Kwota>
+				<Powod>nadwyżka salda nierozliczonych środków</Powod>
+			</Odliczenia>
+			<SumaOdliczen>1000</SumaOdliczen>
+			<DoZaplaty>63279.92</DoZaplaty>
+		</Rozliczenie>
+		<Platnosc>
+			<TerminPlatnosci>
+				<Termin>2022-03-15</Termin>
+			</TerminPlatnosci>
+			<FormaPlatnosci>6</FormaPlatnosci>
+			<RachunekBankowyFaktora>
+				<NrRB>73111111111111111111111111</NrRB>
+				<RachunekWlasnyBanku>2</RachunekWlasnyBanku>
+				<NazwaBanku>Bank Bankowości Bankowej S. A.</NazwaBanku>
+				<OpisRachunku>PLN</OpisRachunku>
+			</RachunekBankowyFaktora>
+		</Platnosc>
+		<WarunkiTransakcji>
+			<Zamowienia>
+				<DataZamowienia>2022-01-26</DataZamowienia>
+				<NrZamowienia>4354343</NrZamowienia>
+			</Zamowienia>
+			<NrPartiiTowaru>2312323/2022</NrPartiiTowaru>
+			<WarunkiDostawy>CIP</WarunkiDostawy>
+			<Transport>
+				<RodzajTransportu>3</RodzajTransportu>
+				<Przewoznik>
+					<DaneIdentyfikacyjne>
+						<NIP>6666666666</NIP>
+						<Nazwa>Jan Nowak Transport</Nazwa>
+					</DaneIdentyfikacyjne>
+					<AdresPrzewoznika>
+						<KodKraju>PL</KodKraju>
+						<AdresL1>ul. Bukowa 5</AdresL1>
+						<AdresL2>00-004 Poznań</AdresL2>
+					</AdresPrzewoznika>
+				</Przewoznik>
+				<OpisLadunku>13</OpisLadunku>
+				<JednostkaOpakowania>a</JednostkaOpakowania>
+				<WysylkaZ>
+					<KodKraju>PL</KodKraju>
+					<AdresL1>Sadowa 1 lok. 2</AdresL1>
+					<AdresL2>00-001 Warszawa</AdresL2>
+				</WysylkaZ>
+				<WysylkaDo>
+					<KodKraju>PL</KodKraju>
+					<AdresL1>ul. Sadowa 1 lok. 3</AdresL1>
+					<AdresL2>00-002 Kraków</AdresL2>
+				</WysylkaDo>
+			</Transport>
+		</WarunkiTransakcji>
+	</Fa>
+	<Stopka>
+		<Informacje>
+			<StopkaFaktury>Kapiał zakładowy 5 000 000</StopkaFaktury>
+		</Informacje>
+		<Rejestry>
+			<KRS>0000099999</KRS>
+			<REGON>999999999</REGON>
+			<BDO>000099999</BDO>
+		</Rejestry>
+	</Stopka>
+</Faktura>
+
+```
+
+<br>
+
+**Yukaridaki toptan satış faturasındaki alıcı verileri için faturanın düzeltilmesi**
+
+?> Malların toptan satışı için düzeltici fatura, fatura düzeltmesinin alıcının adının yanlış olmasından kaynaklandığı durum. Fatura düzeltmesi tutar değerlerini etkilemez.
+
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<Faktura xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2022/01/05/eD/DefinicjeTypy/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://crd.gov.pl/wzor/2023/06/29/12648/">
+	<Naglowek>
+		<KodFormularza kodSystemowy="FA (2)" wersjaSchemy="1-0E">FA</KodFormularza>
+		<WariantFormularza>2</WariantFormularza>
+		<DataWytworzeniaFa>2022-02-15T09:30:47Z</DataWytworzeniaFa>
+		<SystemInfo>Samplofaktur</SystemInfo>
+	</Naglowek>
+	<Podmiot1>
+		<DaneIdentyfikacyjne>
+			<NIP>9999999999</NIP>
+			<Nazwa>ABC AGD sp. z o. o.</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Kwiatowa 1 m. 2</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>abc@abc.pl</Email>
+			<Telefon>667444555</Telefon>
+		</DaneKontaktowe>
+	</Podmiot1>
+	<Podmiot2>
+		<DaneIdentyfikacyjne>
+			<NIP>1111111111</NIP>
+			<Nazwa>CeDeE s.c.</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Sadowa 1 lok. 3</AdresL1>
+			<AdresL2>00-002 Kraków</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>cde@cde.pl</Email>
+			<Telefon>555777999</Telefon>
+		</DaneKontaktowe>
+		<NrKlienta>fdfd778343</NrKlienta>
+		<IDNabywcy>0001</IDNabywcy>
+	</Podmiot2>
+	<Fa>
+		<KodWaluty>PLN</KodWaluty>
+		<P_1>2022-04-01</P_1>
+		<P_1M>Warszawa</P_1M>
+		<P_2>FK2022/04/23</P_2>
+		<P_15>0</P_15>
+		<Adnotacje>
+			<P_16>2</P_16>
+			<P_17>2</P_17>
+			<P_18>2</P_18>
+			<P_18A>2</P_18A>
+			<Zwolnienie>
+				<P_19N>1</P_19N>
+			</Zwolnienie>
+			<NoweSrodkiTransportu>
+				<P_22N>1</P_22N>
+			</NoweSrodkiTransportu>
+			<P_23>2</P_23>
+			<PMarzy>
+				<P_PMarzyN>1</P_PMarzyN>
+			</PMarzy>
+		</Adnotacje>
+		<RodzajFaktury>KOR</RodzajFaktury>
+		<PrzyczynaKorekty>błędna nazwa nabywcy</PrzyczynaKorekty>
+		<TypKorekty>1</TypKorekty>
+		<DaneFaKorygowanej>
+			<DataWystFaKorygowanej>2022-02-15</DataWystFaKorygowanej>
+			<NrFaKorygowanej>FV2022/02/150</NrFaKorygowanej>
+			<NrKSeF>1</NrKSeF>
+			<NrKSeFFaKorygowanej>9999999999-20230908-8BEF280C8D35-4D</NrKSeFFaKorygowanej>
+		</DaneFaKorygowanej>
+		<Podmiot2K>
+			<DaneIdentyfikacyjne>
+				<NIP>1111111111</NIP>
+				<Nazwa>CDE sp. j.</Nazwa>
+			</DaneIdentyfikacyjne>
+			<Adres>
+				<KodKraju>PL</KodKraju>
+				<AdresL1>ul. Sadowa 1 lok. 3</AdresL1>
+				<AdresL2>00-002 Kraków</AdresL2>
+			</Adres>
+			<IDNabywcy>0001</IDNabywcy>
+		</Podmiot2K>
+	</Fa>
+	<Stopka>
+		<Informacje>
+			<StopkaFaktury>Kapiał zakładowy 5 000 000</StopkaFaktury>
+		</Informacje>
+		<Rejestry>
+			<KRS>0000099999</KRS>
+			<REGON>999999999</REGON>
+			<BDO>000099999</BDO>
+		</Rejestry>
+	</Stopka>
+</Faktura>
+```
+
+<br>
+
+**Düzeltici bir fatura, belirli bir dönemdeki tüm teslimatlarda yapılan indirim nedeniyle**.
+
+?> Belirli bir dönemdeki tüm teslimatlarla ilgili bir indirimden kaynaklanan "kümülatif" düzeltme faturası. Bu faturanın karakteristik özellikleri "eksi" tutarlar (fatura satırlarında veri olmamasına rağmen), DönemFaKor alanının oluşumu ve düzeltilmiş faturaların birden fazla sayı ve tarihidir.
+
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<Faktura xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2022/01/05/eD/DefinicjeTypy/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://crd.gov.pl/wzor/2023/06/29/12648/">
+	<Naglowek>
+		<KodFormularza kodSystemowy="FA (2)" wersjaSchemy="1-0E">FA</KodFormularza>
+		<WariantFormularza>2</WariantFormularza>
+		<DataWytworzeniaFa>2022-02-15T09:30:47Z</DataWytworzeniaFa>
+		<SystemInfo>Samplofaktur</SystemInfo>
+	</Naglowek>
+	<Podmiot1>
+		<DaneIdentyfikacyjne>
+			<NIP>9999999999</NIP>
+			<Nazwa>ABC AGD sp. z o. o.</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Kwiatowa 1 m. 2</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>abc@abc.pl</Email>
+			<Telefon>667444555</Telefon>
+		</DaneKontaktowe>
+	</Podmiot1>
+	<Podmiot2>
+		<DaneIdentyfikacyjne>
+			<NIP>1111111111</NIP>
+			<Nazwa>CeDeE s.c.</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Sadowa 1 lok. 3</AdresL1>
+			<AdresL2>00-002 Kraków</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>cde@cde.pl</Email>
+			<Telefon>555777999</Telefon>
+		</DaneKontaktowe>
+		<NrKlienta>fdfd778343</NrKlienta>
+	</Podmiot2>
+	<Fa>
+		<KodWaluty>PLN</KodWaluty>
+		<P_1>2022-07-15</P_1>
+		<P_1M>Warszawa</P_1M>
+		<P_2>FK2022/07/243</P_2>
+		<P_13_1>-40650.41</P_13_1>
+		<P_14_1>-9349.59</P_14_1>
+		<P_15>-50000</P_15>
+		<Adnotacje>
+			<P_16>2</P_16>
+			<P_17>2</P_17>
+			<P_18>2</P_18>
+			<P_18A>2</P_18A>
+			<Zwolnienie>
+				<P_19N>1</P_19N>
+			</Zwolnienie>
+			<NoweSrodkiTransportu>
+				<P_22N>1</P_22N>
+			</NoweSrodkiTransportu>
+			<P_23>2</P_23>
+			<PMarzy>
+				<P_PMarzyN>1</P_PMarzyN>
+			</PMarzy>
+		</Adnotacje>
+		<RodzajFaktury>KOR</RodzajFaktury>
+		<PrzyczynaKorekty>rabat 50000 z uwagi na poziom zakupów pierwszym półroczu 2022</PrzyczynaKorekty>
+		<TypKorekty>2</TypKorekty>
+		<DaneFaKorygowanej>
+			<DataWystFaKorygowanej>2022-01-15</DataWystFaKorygowanej>
+			<NrFaKorygowanej>FV2022/01/134</NrFaKorygowanej>
+			<NrKSeF>1</NrKSeF>
+			<NrKSeFFaKorygowanej>9999999999-20230908-8BEF280C8D35-4D</NrKSeFFaKorygowanej>
+		</DaneFaKorygowanej>
+		<DaneFaKorygowanej>
+			<DataWystFaKorygowanej>2022-02-15</DataWystFaKorygowanej>
+			<NrFaKorygowanej>FV2022/02/150</NrFaKorygowanej>
+			<NrKSeF>1</NrKSeF>
+			<NrKSeFFaKorygowanej>9999999999-20230908-76B2B580D4DC-80</NrKSeFFaKorygowanej>
+		</DaneFaKorygowanej>
+		<DaneFaKorygowanej>
+			<DataWystFaKorygowanej>2022-03-15</DataWystFaKorygowanej>
+			<NrFaKorygowanej>FV2022/03/143</NrFaKorygowanej>
+			<NrKSeF>1</NrKSeF>
+			<NrKSeFFaKorygowanej>9999999999-20230908-4191312C0E57-09</NrKSeFFaKorygowanej>
+		</DaneFaKorygowanej>
+		<DaneFaKorygowanej>
+			<DataWystFaKorygowanej>2022-04-15</DataWystFaKorygowanej>
+			<NrFaKorygowanej>FV2022/04/23</NrFaKorygowanej>
+			<NrKSeF>1</NrKSeF>
+			<NrKSeFFaKorygowanej>9999999999-20230908-2B9266CEF3C4-DD</NrKSeFFaKorygowanej>
+		</DaneFaKorygowanej>
+		<DaneFaKorygowanej>
+			<DataWystFaKorygowanej>2022-05-15</DataWystFaKorygowanej>
+			<NrFaKorygowanej>FV2022/05/54</NrFaKorygowanej>
+			<NrKSeF>1</NrKSeF>
+			<NrKSeFFaKorygowanej>9999999999-20230908-16B99491C78B-3D</NrKSeFFaKorygowanej>
+		</DaneFaKorygowanej>
+		<DaneFaKorygowanej>
+			<DataWystFaKorygowanej>2022-06-15</DataWystFaKorygowanej>
+			<NrFaKorygowanej>FV2022/06/15</NrFaKorygowanej>
+			<NrKSeF>1</NrKSeF>
+			<NrKSeFFaKorygowanej>9999999999-20230908-D08FB95950BE-3E</NrKSeFFaKorygowanej>
+		</DaneFaKorygowanej>
+		<OkresFaKorygowanej>pierwsze półrocze 2022</OkresFaKorygowanej>
+	</Fa>
+	<Stopka>
+		<Informacje>
+			<StopkaFaktury>Kapiał zakładowy 5 000 000</StopkaFaktury>
+		</Informacje>
+		<Rejestry>
+			<KRS>0000099999</KRS>
+			<REGON>999999999</REGON>
+			<BDO>000099999</BDO>
+		</Rejestry>
+	</Stopka>
+</Faktura>
+```
+
+<br>
+
+**Düzeltici bir fatura, teslimatların bir kısmındaki indirim nedeniyle.**
+
+?> Belirli bir dönemdeki teslimatların bir kısmına ilişkin bir indirimden kaynaklanan toplu düzeltme faturası olarak adlandırılır. Özellikleri şunlardır: "eksi" tutarlar. Fatura satırlarında tutar verisi olmamasına, DönemFaKor alanının varlığına ve düzeltilmiş faturaların birden fazla sayı ve tarihe sahip olmasına rağmen. Fatura belirtilen döneme ait tüm teslimleri düzeltmediği için malların isimleri verilmiştir.
+
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<Faktura xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2022/01/05/eD/DefinicjeTypy/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://crd.gov.pl/wzor/2023/06/29/12648/">
+	<Naglowek>
+		<KodFormularza kodSystemowy="FA (2)" wersjaSchemy="1-0E">FA</KodFormularza>
+		<WariantFormularza>2</WariantFormularza>
+		<DataWytworzeniaFa>2022-02-15T09:30:47Z</DataWytworzeniaFa>
+		<SystemInfo>Samplofaktur</SystemInfo>
+	</Naglowek>
+	<Podmiot1>
+		<DaneIdentyfikacyjne>
+			<NIP>9999999999</NIP>
+			<Nazwa>ABC AGD sp. z o. o.</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Kwiatowa 1 m. 2</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>abc@abc.pl</Email>
+			<Telefon>667444555</Telefon>
+		</DaneKontaktowe>
+	</Podmiot1>
+	<Podmiot2>
+		<DaneIdentyfikacyjne>
+			<NIP>1111111111</NIP>
+			<Nazwa>CeDeE s.c.</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Sadowa 1 lok. 3</AdresL1>
+			<AdresL2>00-002 Kraków</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>cde@cde.pl</Email>
+			<Telefon>555777999</Telefon>
+		</DaneKontaktowe>
+		<NrKlienta>fdfd778343</NrKlienta>
+	</Podmiot2>
+	<Fa>
+		<KodWaluty>PLN</KodWaluty>
+		<P_1>2022-07-15</P_1>
+		<P_1M>Warszawa</P_1M>
+		<P_2>FK2022/07/243</P_2>
+		<P_13_1>-40650.41</P_13_1>
+		<P_14_1>-9349.59</P_14_1>
+		<P_15>-50000</P_15>
+		<Adnotacje>
+			<P_16>2</P_16>
+			<P_17>2</P_17>
+			<P_18>2</P_18>
+			<P_18A>2</P_18A>
+			<Zwolnienie>
+				<P_19N>1</P_19N>
+			</Zwolnienie>
+			<NoweSrodkiTransportu>
+				<P_22N>1</P_22N>
+			</NoweSrodkiTransportu>
+			<P_23>2</P_23>
+			<PMarzy>
+				<P_PMarzyN>1</P_PMarzyN>
+			</PMarzy>
+		</Adnotacje>
+		<RodzajFaktury>KOR</RodzajFaktury>
+		<PrzyczynaKorekty>rabat 50000 z uwagi na poziom zakupów pierwszym półroczu 2022</PrzyczynaKorekty>
+		<TypKorekty>2</TypKorekty>
+		<DaneFaKorygowanej>
+			<DataWystFaKorygowanej>2022-01-15</DataWystFaKorygowanej>
+			<NrFaKorygowanej>FV2022/01/134</NrFaKorygowanej>
+			<NrKSeF>1</NrKSeF>
+			<NrKSeFFaKorygowanej>9999999999-20230908-8BEF280C8D35-4D</NrKSeFFaKorygowanej>
+		</DaneFaKorygowanej>
+		<DaneFaKorygowanej>
+			<DataWystFaKorygowanej>2022-02-15</DataWystFaKorygowanej>
+			<NrFaKorygowanej>FV2022/02/150</NrFaKorygowanej>
+			<NrKSeF>1</NrKSeF>
+			<NrKSeFFaKorygowanej>9999999999-20230908-76B2B580D4DC-80</NrKSeFFaKorygowanej>
+		</DaneFaKorygowanej>
+		<DaneFaKorygowanej>
+			<DataWystFaKorygowanej>2022-03-15</DataWystFaKorygowanej>
+			<NrFaKorygowanej>FV2022/03/143</NrFaKorygowanej>
+			<NrKSeF>1</NrKSeF>
+			<NrKSeFFaKorygowanej>9999999999-20230908-4191312C0E57-09</NrKSeFFaKorygowanej>
+		</DaneFaKorygowanej>
+		<DaneFaKorygowanej>
+			<DataWystFaKorygowanej>2022-04-15</DataWystFaKorygowanej>
+			<NrFaKorygowanej>FV2022/04/23</NrFaKorygowanej>
+			<NrKSeF>1</NrKSeF>
+			<NrKSeFFaKorygowanej>9999999999-20230908-2B9266CEF3C4-DD</NrKSeFFaKorygowanej>
+		</DaneFaKorygowanej>
+		<DaneFaKorygowanej>
+			<DataWystFaKorygowanej>2022-05-15</DataWystFaKorygowanej>
+			<NrFaKorygowanej>FV2022/05/54</NrFaKorygowanej>
+			<NrKSeF>1</NrKSeF>
+			<NrKSeFFaKorygowanej>9999999999-20230908-16B99491C78B-3D</NrKSeFFaKorygowanej>
+		</DaneFaKorygowanej>
+		<DaneFaKorygowanej>
+			<DataWystFaKorygowanej>2022-06-15</DataWystFaKorygowanej>
+			<NrFaKorygowanej>FV2022/06/15</NrFaKorygowanej>
+			<NrKSeF>1</NrKSeF>
+			<NrKSeFFaKorygowanej>9999999999-20230908-D08FB95950BE-3E</NrKSeFFaKorygowanej>
+		</DaneFaKorygowanej>
+		<OkresFaKorygowanej>pierwsze półrocze 2022</OkresFaKorygowanej>
+		<FaWiersz>
+			<NrWierszaFa>1</NrWierszaFa>
+			<P_7>lodówka Zimnotech mk1</P_7>
+			<CN>8418 21 91</CN>
+			<P_8A>szt.</P_8A>
+			<P_8B>1000</P_8B>
+		</FaWiersz>
+	</Fa>
+	<Stopka>
+		<Informacje>
+			<StopkaFaktury>Kapiał zakładowy 5 000 000</StopkaFaktury>
+		</Informacje>
+		<Rejestry>
+			<KRS>0000099999</KRS>
+			<REGON>999999999</REGON>
+			<BDO>000099999</BDO>
+		</Rejestry>
+	</Stopka>
+</Faktura>
+
+```
+
+<br>
 
 ## KSeF API (OpenAPI) 
 
