@@ -1204,6 +1204,1971 @@ xmlns="http://crd.gov.pl/wzor/2023/06/29/12648/">
 
 <br>
 
+**Marj KDV faturası ikinci el malların teslimatının belgelendirilmesi.**
+
+?> Kullanılmış bir arabanın teslimini belgeleyen marj KDV faturası. Fatura, kısmen ödendiğini belirtmekte ve bakiyenin ödenmesi için bir son tarih belirlemektedir. FA(2) versiyonu, P_13_11 marj prosedüründeki satışların değerini toplayan bir alan sağlar.
+
+
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<Faktura xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2022/01/05/eD/DefinicjeTypy/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://crd.gov.pl/wzor/2023/06/29/12648/">
+	<Naglowek>
+		<KodFormularza kodSystemowy="FA (2)" wersjaSchemy="1-0E">FA</KodFormularza>
+		<WariantFormularza>2</WariantFormularza>
+		<DataWytworzeniaFa>2022-02-15T09:30:47Z</DataWytworzeniaFa>
+		<SystemInfo>Samplofaktur</SystemInfo>
+	</Naglowek>
+	<Podmiot1>
+		<DaneIdentyfikacyjne>
+			<NIP>9999999999</NIP>
+			<Nazwa>Komis ABC AGD sp. z o. o.</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Kwiatowa 1 m. 2</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>abc@abc.pl</Email>
+			<Telefon>667444555</Telefon>
+		</DaneKontaktowe>
+	</Podmiot1>
+	<Podmiot2>
+		<DaneIdentyfikacyjne>
+			<NIP>1111111111</NIP>
+			<Nazwa>F.H.U. Jan Kowalski</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Polna 1</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>jan@kowalski.pl</Email>
+			<Telefon>555777999</Telefon>
+		</DaneKontaktowe>
+		<NrKlienta>fdfd778343</NrKlienta>
+	</Podmiot2>
+	<Fa>
+		<KodWaluty>PLN</KodWaluty>
+		<P_1>2022-01-27</P_1>
+		<P_1M>Warszawa</P_1M>
+		<P_2>FM2022/02/150</P_2>
+		<P_6>2022-01-27</P_6>
+		<P_13_11>15000</P_13_11>
+		<P_15>15000</P_15>
+		<Adnotacje>
+			<P_16>2</P_16>
+			<P_17>2</P_17>
+			<P_18>2</P_18>
+			<P_18A>2</P_18A>
+			<Zwolnienie>
+				<P_19N>1</P_19N>
+			</Zwolnienie>
+			<NoweSrodkiTransportu>
+				<P_22N>1</P_22N>
+			</NoweSrodkiTransportu>
+			<P_23>2</P_23>
+			<PMarzy>
+				<P_PMarzy>1</P_PMarzy>
+				<P_PMarzy_3_1>1</P_PMarzy_3_1>
+			</PMarzy>
+		</Adnotacje>
+		<RodzajFaktury>VAT</RodzajFaktury>
+		<FP>1</FP>
+		<FaWiersz>
+			<NrWierszaFa>1</NrWierszaFa>
+			<P_7>samochód używany marki Autex rocznik 2010</P_7>
+			<P_8A>szt.</P_8A>
+			<P_8B>1</P_8B>
+			<P_9B>15000</P_9B>
+			<P_11A>15000</P_11A>
+			<GTU>GTU_07</GTU>
+		</FaWiersz>
+		<Platnosc>
+			<ZnacznikZaplatyCzesciowej>1</ZnacznikZaplatyCzesciowej>
+			<ZaplataCzesciowa>
+				<KwotaZaplatyCzesciowej>10000</KwotaZaplatyCzesciowej>
+				<DataZaplatyCzesciowej>2022-01-27</DataZaplatyCzesciowej>
+			</ZaplataCzesciowa>
+			<TerminPlatnosci>
+				<Termin>2022-03-15</Termin>
+			</TerminPlatnosci>
+			<FormaPlatnosci>6</FormaPlatnosci>
+			<RachunekBankowy>
+				<NrRB>73111111111111111111111111</NrRB>
+				<NazwaBanku>Bank Bankowości Bankowej S. A.</NazwaBanku>
+				<OpisRachunku>PLN</OpisRachunku>
+			</RachunekBankowy>
+		</Platnosc>
+	</Fa>
+	<Stopka>
+		<Informacje>
+			<StopkaFaktury>Kapiał zakładowy 5 000 000</StopkaFaktury>
+		</Informacje>
+		<Rejestry>
+			<KRS>0000099999</KRS>
+			<REGON>999999999</REGON>
+			<BDO>000099999</BDO>
+		</Rejestry>
+	</Stopka>
+</Faktura>
+
+
+```
+
+<br>
+
+**Hizmetler için satış faturası faaliyet kiralamaları.**
+
+?> Örnek olması açısından, belediyenin alıcı olarak gösterildiği ve alıcının bir ilkokul olduğu operasyonel kiralama hizmetlerinin satışına ilişkin bir fatura. Fatura üzerinde aynı anda hem ZW 'oranını' hem de %23 oranını ve ayrıca fatura düzenlendiğinde ödemenin tamamının yapıldığına dair bilgileri içeriyordu. Ayrıca, tüm fatura tutarı için tek bir ödeme tarihi belirlenmiştir
+
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<Faktura xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2022/01/05/eD/DefinicjeTypy/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://crd.gov.pl/wzor/2023/06/29/12648/">
+	<Naglowek>
+		<KodFormularza kodSystemowy="FA (2)" wersjaSchemy="1-0E">FA</KodFormularza>
+		<WariantFormularza>2</WariantFormularza>
+		<DataWytworzeniaFa>2022-02-15T09:30:47Z</DataWytworzeniaFa>
+		<SystemInfo>Samplofaktur</SystemInfo>
+	</Naglowek>
+	<Podmiot1>
+		<DaneIdentyfikacyjne>
+			<NIP>9999999999</NIP>
+			<Nazwa>ABC Leasing S.A.</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Kwiatowa 1 m. 2</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>abc@abc.pl</Email>
+			<Telefon>667444555</Telefon>
+		</DaneKontaktowe>
+	</Podmiot1>
+	<Podmiot2>
+		<DaneIdentyfikacyjne>
+			<NIP>1111111111</NIP>
+			<Nazwa>Gmina Bzdziszewo</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>Bzdziszewo 1</AdresL1>
+			<AdresL2>00-007 Bzdziszewo</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>bzdziszewo@tuwartoinwestowac.pl</Email>
+			<Telefon>555777999</Telefon>
+		</DaneKontaktowe>
+		<NrKlienta>fdfd778343</NrKlienta>
+	</Podmiot2>
+	<Podmiot3>
+		<DaneIdentyfikacyjne>
+			<NIP>2222222222</NIP>
+			<Nazwa>Szkoła Podstawowa w Bzdziszewie</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Akacjowa 200</AdresL1>
+			<AdresL2>00-007 Bzdziszewo</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>sp@bzdziszewo.p</Email>
+			<Telefon>666888999</Telefon>
+		</DaneKontaktowe>
+		<Rola>8</Rola>
+	</Podmiot3>
+	<Fa>
+		<KodWaluty>PLN</KodWaluty>
+		<P_1>2022-02-15</P_1>
+		<P_1M>Warszawa</P_1M>
+		<P_2>FV2022/02/150</P_2>
+		<OkresFa>
+			<P_6_Od>2022-01-01</P_6_Od>
+			<P_6_Do>2022-01-01</P_6_Do>
+		</OkresFa>
+		<P_13_1>2000</P_13_1>
+		<P_14_1>460</P_14_1>
+		<P_13_7>300</P_13_7>
+		<P_15>2760</P_15>
+		<Adnotacje>
+			<P_16>2</P_16>
+			<P_17>2</P_17>
+			<P_18>2</P_18>
+			<P_18A>2</P_18A>
+			<Zwolnienie>
+				<P_19>1</P_19>
+				<P_19A>art. 43 ust. 1 pkt 37 ustawy VAT</P_19A>
+			</Zwolnienie>
+			<NoweSrodkiTransportu>
+				<P_22N>1</P_22N>
+			</NoweSrodkiTransportu>
+			<P_23>2</P_23>
+			<PMarzy>
+				<P_PMarzy>1</P_PMarzy>
+				<P_PMarzy_3_1>1</P_PMarzy_3_1>
+			</PMarzy>
+		</Adnotacje>
+		<RodzajFaktury>VAT</RodzajFaktury>
+		<DodatkowyOpis>
+			<Klucz>część odsetkowa raty</Klucz>
+			<Wartosc>netto 200, vat 46</Wartosc>
+		</DodatkowyOpis>
+		<FaWiersz>
+			<NrWierszaFa>1</NrWierszaFa>
+			<UU_ID>aaaa111133339990</UU_ID>
+			<P_7>rata leasingowa za 01/2022</P_7>
+			<P_8A>szt.</P_8A>
+			<P_8B>1</P_8B>
+			<P_9A>2000</P_9A>
+			<P_11>2000</P_11>
+			<P_12>23</P_12>
+		</FaWiersz>
+		<FaWiersz>
+			<NrWierszaFa>2</NrWierszaFa>
+			<UU_ID>aaaa111133339991</UU_ID>
+			<P_7>pakiet ubezpieczeń za 01/2022</P_7>
+			<P_8A>szt.</P_8A>
+			<P_8B>1</P_8B>
+			<P_9A>300</P_9A>
+			<P_11>300</P_11>
+			<P_12>zw</P_12>
+		</FaWiersz>
+		<Platnosc>
+			<TerminPlatnosci>
+				<Termin>2022-03-15</Termin>
+			</TerminPlatnosci>
+			<FormaPlatnosci>6</FormaPlatnosci>
+			<RachunekBankowy>
+				<NrRB>73111111111111111111111111</NrRB>
+				<NazwaBanku>Bank Bankowości Bankowej S. A.</NazwaBanku>
+				<OpisRachunku>PLN</OpisRachunku>
+			</RachunekBankowy>
+		</Platnosc>
+	</Fa>
+	<Stopka>
+		<Informacje>
+			<StopkaFaktury>Kapiał zakładowy 5 000 000</StopkaFaktury>
+		</Informacje>
+		<Rejestry>
+			<KRS>0000099999</KRS>
+			<REGON>999999999</REGON>
+			<BDO>000099999</BDO>
+		</Rejestry>
+	</Stopka>
+</Faktura>
+
+```
+
+<br>
+
+**Peşin ödeme faturası ile ek alıcı.**
+
+?> Işlemleri belgeleyen 375.150,00 PLN tutarında bir avans faturası ve 20.000,00 PLN tutarında bir avans ödemesi yapılmıştır. Buna ek olarak iki alıcıya fatura ve faturanın düzenlendiği tarihte ödemenin tam olarak yapıldığına dair bilgi.
+
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<Faktura xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2022/01/05/eD/DefinicjeTypy/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://crd.gov.pl/wzor/2023/06/29/12648/">
+	<Naglowek>
+		<KodFormularza kodSystemowy="FA (2)" wersjaSchemy="1-0E">FA</KodFormularza>
+		<WariantFormularza>2</WariantFormularza>
+		<DataWytworzeniaFa>2022-02-15T09:30:47Z</DataWytworzeniaFa>
+		<SystemInfo>Samplofaktur</SystemInfo>
+	</Naglowek>
+	<Podmiot1>
+		<DaneIdentyfikacyjne>
+			<NIP>9999999999</NIP>
+			<Nazwa>ABC Developex sp. z o. o.</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Sadowa 1 m. 3</AdresL1>
+			<AdresL2>00-002 Kraków</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>abc@abc.pl</Email>
+			<Telefon>667444555</Telefon>
+		</DaneKontaktowe>
+	</Podmiot1>
+	<Podmiot2>
+		<DaneIdentyfikacyjne>
+			<NIP>1111111111</NIP>
+			<Nazwa>F.H.U. Jan Kowalski</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Polna 1</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>jan@kowalski.pl</Email>
+			<Telefon>555777999</Telefon>
+		</DaneKontaktowe>		
+	</Podmiot2>
+	<Podmiot3>
+		<DaneIdentyfikacyjne>
+			<NIP>3333333333</NIP>
+			<Nazwa>F.H.U. Grażyna Kowalska</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Polna 1</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>jan@kowalski.pl</Email>
+			<Telefon>555777999</Telefon>
+		</DaneKontaktowe>
+		<Rola>4</Rola>
+		<Udzial>50</Udzial>
+	</Podmiot3>
+	<Fa>
+		<KodWaluty>PLN</KodWaluty>
+		<P_1>2022-02-15</P_1>
+		<P_1M>Warszawa</P_1M>
+		<P_2>FZ2022/02/150</P_2>
+		<P_6>2022-02-15</P_6>
+		<P_13_1>16260.16</P_13_1>
+		<P_14_1>3739.84</P_14_1>
+		<P_15>20000</P_15>
+		<Adnotacje>
+			<P_16>2</P_16>
+			<P_17>2</P_17>
+			<P_18>2</P_18>
+			<P_18A>2</P_18A>
+			<Zwolnienie>
+				<P_19N>1</P_19N>
+			</Zwolnienie>
+			<NoweSrodkiTransportu>
+				<P_22N>1</P_22N>
+			</NoweSrodkiTransportu>
+			<P_23>2</P_23>
+			<PMarzy>
+				<P_PMarzyN>1</P_PMarzyN>
+			</PMarzy>
+		</Adnotacje>
+		<RodzajFaktury>ZAL</RodzajFaktury>
+		<DodatkowyOpis>
+			<Klucz>wysokosć wpłaconego zadatku</Klucz>
+			<Wartosc>20000 zł</Wartosc>
+		</DodatkowyOpis>
+		<Platnosc>
+			<Zaplacono>1</Zaplacono>
+			<DataZaplaty>2022-02-15</DataZaplaty>
+			<FormaPlatnosci>6</FormaPlatnosci>
+		</Platnosc>
+		<Zamowienie>
+			<WartoscZamowienia>375150</WartoscZamowienia>
+			<ZamowienieWiersz>
+				<NrWierszaZam>1</NrWierszaZam>
+				<UU_IDZ>aaaa111133339990</UU_IDZ>
+				<P_7Z>mieszkanie 50m^2</P_7Z>
+				<P_8AZ>szt.</P_8AZ>
+				<P_8BZ>1</P_8BZ>
+				<P_9AZ>300000</P_9AZ>
+				<P_11NettoZ>300000</P_11NettoZ>
+				<P_11VatZ>69000</P_11VatZ>
+				<P_12Z>23</P_12Z>
+			</ZamowienieWiersz>
+			<ZamowienieWiersz>
+				<NrWierszaZam>2</NrWierszaZam>
+				<UU_IDZ>aaaa111133339991</UU_IDZ>
+				<P_7Z>usługi dodatkowe</P_7Z>
+				<P_8AZ>szt.</P_8AZ>
+				<P_8BZ>1</P_8BZ>
+				<P_9AZ>5000</P_9AZ>
+				<P_11NettoZ>5000</P_11NettoZ>
+				<P_11VatZ>1150</P_11VatZ>
+				<P_12Z>23</P_12Z>
+			</ZamowienieWiersz>
+		</Zamowienie>
+	</Fa>
+	<Stopka>
+		<Informacje>
+			<StopkaFaktury>Kapiał zakładowy 5 000 000</StopkaFaktury>
+		</Informacje>
+		<Rejestry>
+			<KRS>0000099999</KRS>
+			<REGON>999999999</REGON>
+			<BDO>000099999</BDO>
+		</Rejestry>
+	</Stopka>
+</Faktura>
+
+```
+
+<br>
+
+**Yukarıdaki peşin ödeme faturasının düzeltici faturası - Yanlış vergi oranı nedeniyle avans ödemesi**
+
+?>  Bu fatura avans tutarında herhangi bir değişiklik olmamasına rağmen vergi oranları arasındaki uzlaşma oranında (Fatura bölümündeki fark ile gösterilir) bir değişikliğe neden olur. Fatura düzeltme faturalarının Sipariş bölümündeki değerler Avans ödemeleri, düzeltilmiş faturanın ilgili satırı için iki satır sağlanarak evrensel bir şekilde sunulur. İlk satır düzeltmeden önceki durumu gösterir ve StatusBeforeZ etiketiyle işaretlenir. İkinci satır düzeltmeden sonraki doğru değeri gösterir. Farka göre tek bir giriş sunarak alternatif bir düzeltme yöntemi de kabul edilebilir. Bu yöntem, yanlış uygulanan bir vergi oranının düzeltilmesi için önerilmemektedir. Düzeltme sonucunda herhangi bir değişikliğin meydana gelmediği Sipariş satırlarının sunumu
+
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<Faktura xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2022/01/05/eD/DefinicjeTypy/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://crd.gov.pl/wzor/2023/06/29/12648/">
+	<Naglowek>
+		<KodFormularza kodSystemowy="FA (2)" wersjaSchemy="1-0E">FA</KodFormularza>
+		<WariantFormularza>2</WariantFormularza>
+		<DataWytworzeniaFa>2022-02-15T09:30:47Z</DataWytworzeniaFa>
+		<SystemInfo>Samplofaktur</SystemInfo>
+	</Naglowek>
+	<Podmiot1>
+		<DaneIdentyfikacyjne>
+			<NIP>9999999999</NIP>
+			<Nazwa>ABC Developex sp. z o. o.</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Sadowa 1 m. 3</AdresL1>
+			<AdresL2>00-002 Kraków</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>abc@abc.pl</Email>
+			<Telefon>667444555</Telefon>
+		</DaneKontaktowe>
+	</Podmiot1>
+	<Podmiot2>
+		<DaneIdentyfikacyjne>
+			<NIP>1111111111</NIP>
+			<Nazwa>F.H.U. Jan Kowalski</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Polna 1</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>jan@kowalski.pl</Email>
+			<Telefon>555777999</Telefon>
+		</DaneKontaktowe>		
+	</Podmiot2>
+	<Podmiot3>
+		<DaneIdentyfikacyjne>
+			<NIP>3333333333</NIP>
+			<Nazwa>F.H.U. Grażyna Kowalska</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Polna 1</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>jan@kowalski.pl</Email>
+			<Telefon>555777999</Telefon>
+		</DaneKontaktowe>
+		<Rola>4</Rola>
+		<Udzial>50</Udzial>
+	</Podmiot3>
+	<Fa>
+		<KodWaluty>PLN</KodWaluty>
+		<P_1>2022-03-15</P_1>
+		<P_1M>Warszawa</P_1M>
+		<P_2>FK2022/03/5</P_2>
+		<P_6>2022-02-15</P_6>
+		<P_13_1>-15993.6</P_13_1>
+		<P_14_1>-3678.53</P_14_1>
+		<P_13_2>18214.94</P_13_2>
+		<P_14_2>1457.19</P_14_2>
+		<P_15>0</P_15>
+		<Adnotacje>
+			<P_16>2</P_16>
+			<P_17>2</P_17>
+			<P_18>2</P_18>
+			<P_18A>2</P_18A>
+			<Zwolnienie>
+				<P_19N>1</P_19N>
+			</Zwolnienie>
+			<NoweSrodkiTransportu>
+				<P_22N>1</P_22N>
+			</NoweSrodkiTransportu>
+			<P_23>2</P_23>
+			<PMarzy>
+				<P_PMarzyN>1</P_PMarzyN>
+			</PMarzy>
+		</Adnotacje>
+		<RodzajFaktury>KOR_ZAL</RodzajFaktury>
+		<PrzyczynaKorekty>błędna stawka VAT</PrzyczynaKorekty>
+		<TypKorekty>3</TypKorekty>
+		<DaneFaKorygowanej>
+			<DataWystFaKorygowanej>2022-02-15</DataWystFaKorygowanej>
+			<NrFaKorygowanej>FZ2022/02/150</NrFaKorygowanej>
+			<NrKSeF>1</NrKSeF>
+			<NrKSeFFaKorygowanej>9999999999-20230908-8BEF280C8D35-4D</NrKSeFFaKorygowanej>
+		</DaneFaKorygowanej>
+		<P_15ZK>20000</P_15ZK>
+		<Zamowienie>
+			<WartoscZamowienia>375150</WartoscZamowienia>
+			<ZamowienieWiersz>
+				<NrWierszaZam>1</NrWierszaZam>
+				<UU_IDZ>aaaa111133339990</UU_IDZ>
+				<P_7Z>mieszkanie 50m^2</P_7Z>
+				<P_8AZ>szt.</P_8AZ>
+				<P_8BZ>1</P_8BZ>
+				<P_9AZ>300000</P_9AZ>
+				<P_11NettoZ>300000</P_11NettoZ>
+				<P_11VatZ>69000</P_11VatZ>
+				<P_12Z>23</P_12Z>
+				<StanPrzedZ>1</StanPrzedZ>
+			</ZamowienieWiersz>
+			<ZamowienieWiersz>
+				<NrWierszaZam>1</NrWierszaZam>
+				<UU_IDZ>aaaa111133339990</UU_IDZ>
+				<P_7Z>mieszkanie 50m^2</P_7Z>
+				<P_8AZ>szt.</P_8AZ>
+				<P_8BZ>1</P_8BZ>
+				<P_9AZ>341666.67</P_9AZ>
+				<P_11NettoZ>341666.67</P_11NettoZ>
+				<P_11VatZ>27333.33</P_11VatZ>
+				<P_12Z>8</P_12Z>
+			</ZamowienieWiersz>
+			<ZamowienieWiersz>
+				<NrWierszaZam>2</NrWierszaZam>
+				<UU_IDZ>aaaa111133339991</UU_IDZ>
+				<P_7Z>usługi dodatkowe</P_7Z>
+				<P_8AZ>szt.</P_8AZ>
+				<P_8BZ>1</P_8BZ>
+				<P_9AZ>5000</P_9AZ>
+				<P_11NettoZ>5000</P_11NettoZ>
+				<P_11VatZ>1150</P_11VatZ>
+				<P_12Z>23</P_12Z>
+				<StanPrzedZ>1</StanPrzedZ>
+			</ZamowienieWiersz>
+			<ZamowienieWiersz>
+				<NrWierszaZam>2</NrWierszaZam>
+				<UU_IDZ>aaaa111133339991</UU_IDZ>
+				<P_7Z>usługi dodatkowe</P_7Z>
+				<P_8AZ>szt.</P_8AZ>
+				<P_8BZ>1</P_8BZ>
+				<P_9AZ>5000</P_9AZ>
+				<P_11NettoZ>5000</P_11NettoZ>
+				<P_11VatZ>1150</P_11VatZ>
+				<P_12Z>23</P_12Z>
+			</ZamowienieWiersz>
+		</Zamowienie>
+	</Fa>
+	<Stopka>
+		<Informacje>
+			<StopkaFaktury>Kapiał zakładowy 5 000 000</StopkaFaktury>
+		</Informacje>
+		<Rejestry>
+			<KRS>0000099999</KRS>
+			<REGON>999999999</REGON>
+			<BDO>000099999</BDO>
+		</Rejestry>
+	</Stopka>
+</Faktura>
+
+```
+
+<br>
+
+**Eksik ödeneni düzelten bir fatura**
+
+?> Faturanın düzeltilmesinin nedeni, avans ödemesi tutarının 30.000,00 PLN olması gerekirken, yanlışlıkla 20.000,00 PLN eksik fatura edilmiş olmasıdır. Bu durumda, sipariş değerinde herhangi bir değişiklik olmaz, bu da Sipariş satırlarının `StanPrzedZ` etiketi kullanılarak düzeltmeden önce olduğu gibi gösterilmesine ve sonraki girişlerle (aynı değerlerle) yeniden girilmesine neden olur. Fatura üzerinde Fatura bölümü `P_15` alanında ek bir giriş olarak görünür PLN 10,000.00 değerinde. Paylaştırma oranlarını `P_13_x` - `P_14_x` alanlarındaki vergi matrahları ve vergi tutarlarına dağıtın.
+
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<Faktura xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2022/01/05/eD/DefinicjeTypy/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://crd.gov.pl/wzor/2023/06/29/12648/">
+	<Naglowek>
+		<KodFormularza kodSystemowy="FA (2)" wersjaSchemy="1-0E">FA</KodFormularza>
+		<WariantFormularza>2</WariantFormularza>
+		<DataWytworzeniaFa>2022-02-15T09:30:47Z</DataWytworzeniaFa>
+		<SystemInfo>Samplofaktur</SystemInfo>
+	</Naglowek>
+	<Podmiot1>
+		<DaneIdentyfikacyjne>
+			<NIP>9999999999</NIP>
+			<Nazwa>ABC Developex sp. z o. o.</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Sadowa 1 m. 3</AdresL1>
+			<AdresL2>00-002 Kraków</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>abc@abc.pl</Email>
+			<Telefon>667444555</Telefon>
+		</DaneKontaktowe>
+	</Podmiot1>
+	<Podmiot2>
+		<DaneIdentyfikacyjne>
+			<NIP>1111111111</NIP>
+			<Nazwa>F.H.U. Jan Kowalski</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Polna 1</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>jan@kowalski.pl</Email>
+			<Telefon>555777999</Telefon>
+		</DaneKontaktowe>
+	</Podmiot2>
+	<Podmiot3>
+		<DaneIdentyfikacyjne>
+			<NIP>3333333333</NIP>
+			<Nazwa>F.H.U. Grażyna Kowalska</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Polna 1</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>jan@kowalski.pl</Email>
+			<Telefon>555777999</Telefon>
+		</DaneKontaktowe>
+		<Rola>4</Rola>
+		<Udzial>50</Udzial>
+	</Podmiot3>
+	<Fa>
+		<KodWaluty>PLN</KodWaluty>
+		<P_1>2022-03-17</P_1>
+		<P_1M>Warszawa</P_1M>
+		<P_2>FK2022/03/7</P_2>
+		<P_6>2022-02-15</P_6>
+		<P_13_1>133.28</P_13_1>
+		<P_14_1>30.65</P_14_1>
+		<P_13_2>9107.47</P_13_2>
+		<P_14_2>728.60</P_14_2>
+		<P_15>10000</P_15>
+		<Adnotacje>
+			<P_16>2</P_16>
+			<P_17>2</P_17>
+			<P_18>2</P_18>
+			<P_18A>2</P_18A>
+			<Zwolnienie>
+				<P_19N>1</P_19N>
+			</Zwolnienie>
+			<NoweSrodkiTransportu>
+				<P_22N>1</P_22N>
+			</NoweSrodkiTransportu>
+			<P_23>2</P_23>
+			<PMarzy>
+				<P_PMarzyN>1</P_PMarzyN>
+			</PMarzy>
+		</Adnotacje>
+		<RodzajFaktury>KOR_ZAL</RodzajFaktury>
+		<PrzyczynaKorekty>błędne zafakturowanie zaniżonej kwoty zadatku 20000 powinno być 30000</PrzyczynaKorekty>
+		<TypKorekty>1</TypKorekty>
+		<DaneFaKorygowanej>
+			<DataWystFaKorygowanej>2022-02-15</DataWystFaKorygowanej>
+			<NrFaKorygowanej>FZ2022/02/150</NrFaKorygowanej>
+			<NrKSeF>1</NrKSeF>
+			<NrKSeFFaKorygowanej>9999999999-20230908-8BEF280C8D35-4D</NrKSeFFaKorygowanej>
+		</DaneFaKorygowanej>
+		<P_15ZK>20000</P_15ZK>
+		<Zamowienie>
+			<WartoscZamowienia>375150</WartoscZamowienia>
+			<ZamowienieWiersz>
+				<NrWierszaZam>1</NrWierszaZam>
+				<UU_IDZ>aaaa111133339990</UU_IDZ>
+				<P_7Z>mieszkanie 50m^2</P_7Z>
+				<P_8AZ>szt.</P_8AZ>
+				<P_8BZ>1</P_8BZ>
+				<P_9AZ>341666.67</P_9AZ>
+				<P_11NettoZ>341666.67</P_11NettoZ>
+				<P_11VatZ>27333.33</P_11VatZ>
+				<P_12Z>8</P_12Z>
+				<StanPrzedZ>1</StanPrzedZ>
+			</ZamowienieWiersz>
+			<ZamowienieWiersz>
+				<NrWierszaZam>1</NrWierszaZam>
+				<UU_IDZ>aaaa111133339990</UU_IDZ>
+				<P_7Z>mieszkanie 50m^2</P_7Z>
+				<P_8AZ>szt.</P_8AZ>
+				<P_8BZ>1</P_8BZ>
+				<P_9AZ>341666.67</P_9AZ>
+				<P_11NettoZ>341666.67</P_11NettoZ>
+				<P_11VatZ>27333.33</P_11VatZ>
+				<P_12Z>8</P_12Z>
+			</ZamowienieWiersz>
+			<ZamowienieWiersz>
+				<NrWierszaZam>2</NrWierszaZam>
+				<UU_IDZ>aaaa111133339991</UU_IDZ>
+				<P_7Z>usługi dodatkowe</P_7Z>
+				<P_8AZ>szt.</P_8AZ>
+				<P_8BZ>1</P_8BZ>
+				<P_9AZ>5000</P_9AZ>
+				<P_11NettoZ>5000</P_11NettoZ>
+				<P_11VatZ>1150</P_11VatZ>
+				<P_12Z>23</P_12Z>
+				<StanPrzedZ>1</StanPrzedZ>
+			</ZamowienieWiersz>
+			<ZamowienieWiersz>
+				<NrWierszaZam>2</NrWierszaZam>
+				<UU_IDZ>aaaa111133339991</UU_IDZ>
+				<P_7Z>usługi dodatkowe</P_7Z>
+				<P_8AZ>szt.</P_8AZ>
+				<P_8BZ>1</P_8BZ>
+				<P_9AZ>5000</P_9AZ>
+				<P_11NettoZ>5000</P_11NettoZ>
+				<P_11VatZ>1150</P_11VatZ>
+				<P_12Z>23</P_12Z>
+			</ZamowienieWiersz>
+		</Zamowienie>
+	</Fa>
+	<Stopka>
+		<Informacje>
+			<StopkaFaktury>Kapiał zakładowy 5 000 000</StopkaFaktury>
+		</Informacje>
+		<Rejestry>
+			<KRS>0000099999</KRS>
+			<REGON>999999999</REGON>
+			<BDO>000099999</BDO>
+		</Rejestry>
+	</Stopka>
+</Faktura>
+
+```
+
+<br>
+
+**Düzeltici fatura Sözleşme değerindeki bir değişiklik nedeniyle yapılan avans ödemesi her iki vergi oranında orantılı olarak**
+
+?> Fatura düzeltmesinin nedeni, ön ödemeyi değiştirmeden siparişin değerini azaltmaktır. Buna karşılık, Fatura bölümündeki vergide değişiklik olmaması, siparişin değerinin geçerli her iki vergi oranında eşit olarak azalmasından kaynaklanmaktadır. Sipariş satırları şunları sunar önceki değerler (`StanPrzedZ` işaretleyici) ve ayarlanmış değerleri ayrı satırlar olarak gösterir
+
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<Faktura xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2022/01/05/eD/DefinicjeTypy/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://crd.gov.pl/wzor/2023/06/29/12648/">
+	<Naglowek>
+		<KodFormularza kodSystemowy="FA (2)" wersjaSchemy="1-0E">FA</KodFormularza>
+		<WariantFormularza>2</WariantFormularza>
+		<DataWytworzeniaFa>2022-02-15T09:30:47Z</DataWytworzeniaFa>
+		<SystemInfo>Samplofaktur</SystemInfo>
+	</Naglowek>
+	<Podmiot1>
+		<DaneIdentyfikacyjne>
+			<NIP>9999999999</NIP>
+			<Nazwa>ABC Developex sp. z o. o.</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Sadowa 1 m. 3</AdresL1>
+			<AdresL2>00-002 Kraków</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>abc@abc.pl</Email>
+			<Telefon>667444555</Telefon>
+		</DaneKontaktowe>
+	</Podmiot1>
+	<Podmiot2>
+		<DaneIdentyfikacyjne>
+			<NIP>1111111111</NIP>
+			<Nazwa>F.H.U. Jan Kowalski</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Polna 1</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>jan@kowalski.pl</Email>
+			<Telefon>555777999</Telefon>
+		</DaneKontaktowe>
+	</Podmiot2>
+	<Podmiot3>
+		<DaneIdentyfikacyjne>
+			<NIP>3333333333</NIP>
+			<Nazwa>F.H.U. Grażyna Kowalska</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Polna 1</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>jan@kowalski.pl</Email>
+			<Telefon>555777999</Telefon>
+		</DaneKontaktowe>
+		<Rola>4</Rola>
+		<Udzial>50</Udzial>
+	</Podmiot3>
+	<Fa>
+		<KodWaluty>PLN</KodWaluty>
+		<P_1>2022-03-17</P_1>
+		<P_1M>Warszawa</P_1M>
+		<P_2>FK2022/03/7</P_2>
+		<P_6>2022-02-15</P_6>
+		<P_15>0</P_15>
+		<Adnotacje>
+			<P_16>2</P_16>
+			<P_17>2</P_17>
+			<P_18>2</P_18>
+			<P_18A>2</P_18A>
+			<Zwolnienie>
+				<P_19N>1</P_19N>
+			</Zwolnienie>
+			<NoweSrodkiTransportu>
+				<P_22N>1</P_22N>
+			</NoweSrodkiTransportu>
+			<P_23>2</P_23>
+			<PMarzy>
+				<P_PMarzyN>1</P_PMarzyN>
+			</PMarzy>
+		</Adnotacje>
+		<RodzajFaktury>KOR_ZAL</RodzajFaktury>
+		<PrzyczynaKorekty>korekta wartości zamówienia o -10%</PrzyczynaKorekty>
+		<TypKorekty>3</TypKorekty>
+		<DaneFaKorygowanej>
+			<DataWystFaKorygowanej>2022-02-15</DataWystFaKorygowanej>
+			<NrFaKorygowanej>FZ2022/02/150</NrFaKorygowanej>
+			<NrKSeF>1</NrKSeF>
+			<NrKSeFFaKorygowanej>9999999999-20230908-8BEF280C8D35-4D</NrKSeFFaKorygowanej>
+		</DaneFaKorygowanej>
+		<P_15ZK>30000</P_15ZK>
+		<Zamowienie>
+			<WartoscZamowienia>337635</WartoscZamowienia>
+			<ZamowienieWiersz>
+				<NrWierszaZam>1</NrWierszaZam>
+				<UU_IDZ>aaaa111133339990</UU_IDZ>
+				<P_7Z>mieszkanie 50m^2</P_7Z>
+				<P_8AZ>szt.</P_8AZ>
+				<P_8BZ>1</P_8BZ>
+				<P_9AZ>341666.67</P_9AZ>
+				<P_11NettoZ>341666.67</P_11NettoZ>
+				<P_11VatZ>27333.33</P_11VatZ>
+				<P_12Z>8</P_12Z>
+				<StanPrzedZ>1</StanPrzedZ>
+			</ZamowienieWiersz>
+			<ZamowienieWiersz>
+				<NrWierszaZam>1</NrWierszaZam>
+				<UU_IDZ>aaaa111133339990</UU_IDZ>
+				<P_7Z>mieszkanie 50m^2</P_7Z>
+				<P_8AZ>szt.</P_8AZ>
+				<P_8BZ>1</P_8BZ>
+				<P_9AZ>307500</P_9AZ>
+				<P_11NettoZ>307500</P_11NettoZ>
+				<P_11VatZ>24600</P_11VatZ>
+				<P_12Z>8</P_12Z>
+			</ZamowienieWiersz>
+			<ZamowienieWiersz>
+				<NrWierszaZam>2</NrWierszaZam>
+				<UU_IDZ>aaaa111133339991</UU_IDZ>
+				<P_7Z>usługi dodatkowe</P_7Z>
+				<P_8AZ>szt.</P_8AZ>
+				<P_8BZ>1</P_8BZ>
+				<P_9AZ>5000</P_9AZ>
+				<P_11NettoZ>5000</P_11NettoZ>
+				<P_11VatZ>1150</P_11VatZ>
+				<P_12Z>23</P_12Z>
+				<StanPrzedZ>1</StanPrzedZ>
+			</ZamowienieWiersz>
+			<ZamowienieWiersz>
+				<NrWierszaZam>2</NrWierszaZam>
+				<UU_IDZ>aaaa111133339991</UU_IDZ>
+				<P_7Z>usługi dodatkowe</P_7Z>
+				<P_8AZ>szt.</P_8AZ>
+				<P_8BZ>1</P_8BZ>
+				<P_9AZ>4500</P_9AZ>
+				<P_11NettoZ>4500</P_11NettoZ>
+				<P_11VatZ>1035</P_11VatZ>
+				<P_12Z>23</P_12Z>
+			</ZamowienieWiersz>
+		</Zamowienie>
+	</Fa>
+	<Stopka>
+		<Informacje>
+			<StopkaFaktury>Kapiał zakładowy 5 000 000</StopkaFaktury>
+		</Informacje>
+		<Rejestry>
+			<KRS>0000099999</KRS>
+			<REGON>999999999</REGON>
+			<BDO>000099999</BDO>
+		</Rejestry>
+	</Stopka>
+</Faktura>
+
+```
+
+<br>
+
+**Fatura takas avansı fatura örneği kurum tarafından yapılan konuşmalar Birincil.**
+
+?>  P_13_x ve P_14_x alanlarındaki tutarlar, belirli bir vergi oranında siparişin brüt tutarının, ödenecek kalan tutara göre siparişin brüt tutarı içinde kalan oranından kaynaklanmaktadır. Faturada, faturanın geri kalanıyla bağlantısı olmadığı için diğer durumlarda görünebilen birincil bir varlık da bulunmaktadır. Fatura, malların tesliminden sonra ve fatura düzenlenmeden önce işletmenin dönüştüğü veya devralındığı durumları temsil eder. Böylece, satıcı olarak farklı bir kuruluş görünür. Malların orijinal tedarikçisi daha sonra '3' rolünde Varlık3 olarak görünür.
+
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<Faktura xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2022/01/05/eD/DefinicjeTypy/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://crd.gov.pl/wzor/2023/06/29/12648/">
+	<Naglowek>
+		<KodFormularza kodSystemowy="FA (2)" wersjaSchemy="1-0E">FA</KodFormularza>
+		<WariantFormularza>2</WariantFormularza>
+		<DataWytworzeniaFa>2022-01-01T00:00:00Z</DataWytworzeniaFa>
+		<SystemInfo>Samplofaktur</SystemInfo>
+	</Naglowek>
+	<Podmiot1>
+		<DaneIdentyfikacyjne>
+			<NIP>9999999999</NIP>
+			<Nazwa>ABC Developex S.A.</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Sadowa 1 m. 3</AdresL1>
+			<AdresL2>00-002 Kraków</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>abc@abc.pl</Email>
+			<Telefon>667444555</Telefon>
+		</DaneKontaktowe>
+	</Podmiot1>
+	<Podmiot2>
+		<DaneIdentyfikacyjne>
+			<NIP>1111111111</NIP>
+			<Nazwa>F.H.U. Jan Kowalski</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Polna 1</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>jan@kowalski.pl</Email>
+			<Telefon>555777999</Telefon>
+		</DaneKontaktowe>
+	</Podmiot2>
+	<Podmiot3>
+		<DaneIdentyfikacyjne>
+			<NIP>3333333333</NIP>
+			<Nazwa>F.H.U. Grażyna Kowalska</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Polna 1</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>jan@kowalski.pl</Email>
+			<Telefon>555777999</Telefon>
+		</DaneKontaktowe>
+		<Rola>4</Rola>
+		<Udzial>50</Udzial>
+	</Podmiot3>
+	<Podmiot3>
+		<DaneIdentyfikacyjne>
+			<NIP>9999999999</NIP>
+			<Nazwa>ABC Developex sp. z o.o.</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Sadowa 1 lok. 3</AdresL1>
+			<AdresL2>00-002 Kraków</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>abc@abc.pl</Email>
+			<Telefon>667444555</Telefon>
+		</DaneKontaktowe>
+		<Rola>3</Rola>
+	</Podmiot3>
+	<Fa>
+		<KodWaluty>PLN</KodWaluty>
+		<P_1>2022-08-17</P_1>
+		<P_1M>Warszawa</P_1M>
+		<P_2>FV2022/08/12</P_2>
+		<P_6>2022-09-17</P_6>
+		<P_13_1>4100.16</P_13_1>
+		<P_14_1>943.04</P_14_1>
+		<P_13_2>280177.59</P_13_2>
+		<P_14_2>22414.21</P_14_2>
+		<P_15>307635</P_15>
+		<Adnotacje>
+			<P_16>2</P_16>
+			<P_17>2</P_17>
+			<P_18>2</P_18>
+			<P_18A>2</P_18A>
+			<Zwolnienie>
+				<P_19N>1</P_19N>
+			</Zwolnienie>
+			<NoweSrodkiTransportu>
+				<P_22N>1</P_22N>
+			</NoweSrodkiTransportu>
+			<P_23>2</P_23>
+			<PMarzy>
+				<P_PMarzyN>1</P_PMarzyN>
+			</PMarzy>
+		</Adnotacje>
+		<RodzajFaktury>ROZ</RodzajFaktury>
+		<DodatkowyOpis>
+			<Klucz>wysokość pozostałej do zapłaty kwoty</Klucz>
+			<Wartosc>307635 zł</Wartosc>
+		</DodatkowyOpis>
+		<FakturaZaliczkowa>			
+			<NrKSeFFaZaliczkowej>9999999999-20230908-8BEF280C8D35-4D</NrKSeFFaZaliczkowej>
+		</FakturaZaliczkowa>
+		<FaWiersz>
+			<NrWierszaFa>1</NrWierszaFa>
+			<UU_ID>aaaa111133339997</UU_ID>
+			<P_7>mieszkanie 50m^2</P_7>
+			<P_8A>szt.</P_8A>
+			<P_8B>1</P_8B>
+			<P_9A>307500</P_9A>
+			<P_11>307500</P_11>
+			<P_12>8</P_12>
+			<GTU>GTU_10</GTU>
+		</FaWiersz>
+		<FaWiersz>
+			<NrWierszaFa>2</NrWierszaFa>
+			<UU_ID>aaaa111133339998</UU_ID>
+			<P_7>usługi dodatkowe</P_7>
+			<P_8A>szt.</P_8A>
+			<P_8B>1</P_8B>
+			<P_9A>4500</P_9A>
+			<P_11>4500</P_11>
+			<P_12>23</P_12>
+		</FaWiersz>
+		<Platnosc>
+			<TerminPlatnosci>
+				<Termin>2022-09-15</Termin>
+				<TerminOpis>co najmniej 50% pozostałej kwoty</TerminOpis>
+			</TerminPlatnosci>
+			<TerminPlatnosci>
+				<Termin>2022-10-15</Termin>
+				<TerminOpis>pozostała część</TerminOpis>
+			</TerminPlatnosci>
+			<FormaPlatnosci>6</FormaPlatnosci>
+			<RachunekBankowy>
+				<NrRB>73111111111111111111111111</NrRB>
+				<NazwaBanku>Bank Bankowości Bankowej S. A.</NazwaBanku>
+				<OpisRachunku>PLN</OpisRachunku>
+			</RachunekBankowy>
+		</Platnosc>
+	</Fa>
+	<Stopka>
+		<Informacje>
+			<StopkaFaktury>Kapiał zakładowy 5 000 000</StopkaFaktury>
+		</Informacje>
+		<Rejestry>
+			<KRS>0000099999</KRS>
+			<REGON>999999999</REGON>
+			<BDO>000099999</BDO>
+		</Rejestry>
+	</Stopka>
+</Faktura>
+
+```
+
+<br>
+
+**Basitleştirilmiş fatura**
+
+?> Basitleştirilmiş bir fatura, aşağıdaki tutarlarla karakterize edilir 450,00 PLN veya 100 EUR eşdeğerini aşmayan `P_15` alanı. Alıcı verilerinde alıcının TIN'inin belirtilmesi zorunludur. Bu zorunlu değildir Bu durumda diğer alıcı verilerini doldurmak gerekir. Basitleştirilmiş bir fatura sunmanın en arzu edilen yolu fatura üzerindedir. `P_13_x` ve `P_14_x` alanlarını içeren bir fatura, bu tür bir faturanın içeriğinin gerekliliğine ilişkin çok genel hüküm nedeniyle mümkün olan tek fatura olmasa da.
+
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<Faktura xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2022/01/05/eD/DefinicjeTypy/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://crd.gov.pl/wzor/2023/06/29/12648/">
+	<Naglowek>
+		<KodFormularza kodSystemowy="FA (2)" wersjaSchemy="1-0E">FA</KodFormularza>
+		<WariantFormularza>2</WariantFormularza>
+		<DataWytworzeniaFa>2022-01-01T00:00:00Z</DataWytworzeniaFa>
+		<SystemInfo>SamploFaktur</SystemInfo>
+	</Naglowek>
+	<Podmiot1>
+		<DaneIdentyfikacyjne>
+			<NIP>9999999999</NIP>
+			<Nazwa>ABC AGD sp. z o. o.</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Kwiatowa 1 m. 2</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>abc@abc.pl</Email>
+			<Telefon>667444555</Telefon>
+		</DaneKontaktowe>
+	</Podmiot1>
+	<Podmiot2>
+		<DaneIdentyfikacyjne>
+			<NIP>1111111111</NIP>
+		</DaneIdentyfikacyjne>
+	</Podmiot2>
+	<Fa>
+		<KodWaluty>PLN</KodWaluty>
+		<P_1>2022-02-15</P_1>
+		<P_2>FV2022/02/150</P_2>
+		<P_6>2022-01-03</P_6>
+		<P_13_1>365.85</P_13_1>
+		<P_14_1>84.15</P_14_1>
+		<P_15>450</P_15>
+		<Adnotacje>
+			<P_16>2</P_16>
+			<P_17>2</P_17>
+			<P_18>2</P_18>
+			<P_18A>2</P_18A>
+			<Zwolnienie>
+				<P_19N>1</P_19N>
+			</Zwolnienie>
+			<NoweSrodkiTransportu>
+				<P_22N>1</P_22N>
+			</NoweSrodkiTransportu>
+			<P_23>2</P_23>
+			<PMarzy>
+				<P_PMarzyN>1</P_PMarzyN>
+			</PMarzy>
+		</Adnotacje>
+		<RodzajFaktury>UPR</RodzajFaktury>
+		<FaWiersz>
+			<NrWierszaFa>1</NrWierszaFa>
+			<P_7>wiertarka Wiertex mk5</P_7>
+		</FaWiersz>
+	</Fa>
+	<Stopka>
+		<Informacje>
+			<StopkaFaktury>Kapiał zakładowy 5 000 000</StopkaFaktury>
+		</Informacje>
+		<Rejestry>
+			<KRS>0000099999</KRS>
+			<REGON>999999999</REGON>
+			<BDO>000099999</BDO>
+		</Rejestry>
+	</Stopka>
+</Faktura>
+
+```
+
+<br>
+
+**Basitleştirilmiş fatura veri sunumu**
+
+?>  Fatura, `P_13_x` ve `P_14_x` alanlarında tutar olmamasına rağmen `P_15` alanında bir tutar içerir. Bu durumda vergi, vergi oranı bilgisini içeren `P_12` alanından belirlenebilir. Bu durumda, tüm faturanın tek bir vergi oranı ile düzenlenmiş olması önemlidir. Daha sonra vergiyi şu şekilde hesaplamak mümkün olacaktır: `P_15` alanı - `(P_15 *100)/123`. Öte yandan, faturanın aşağıdakileri içermesi gerekir farklı vergi oranlarına sahip hatlar ve `P_13_x` - `P_14_x` alanlarındaki verilerin dahil edilmemesi de dahil olmak üzere, yasal gerekliliği karşılamak için ek olarak `P_11` veya `P_11_A` alanlarındaki tutarları da dahil etmesi gerekecektir.
+
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<Faktura xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2022/01/05/eD/DefinicjeTypy/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://crd.gov.pl/wzor/2023/06/29/12648/">
+	<Naglowek>
+		<KodFormularza kodSystemowy="FA (2)" wersjaSchemy="1-0E">FA</KodFormularza>
+		<WariantFormularza>2</WariantFormularza>
+		<DataWytworzeniaFa>2022-01-01T00:00:00Z</DataWytworzeniaFa>
+		<SystemInfo>SamploFaktur</SystemInfo>
+	</Naglowek>
+	<Podmiot1>
+		<DaneIdentyfikacyjne>
+			<NIP>9999999999</NIP>
+			<Nazwa>ABC AGD sp. z o. o.</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Kwiatowa 1 m. 2</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>abc@abc.pl</Email>
+			<Telefon>667444555</Telefon>
+		</DaneKontaktowe>
+	</Podmiot1>
+	<Podmiot2>
+		<DaneIdentyfikacyjne>
+			<NIP>1111111111</NIP>
+		</DaneIdentyfikacyjne>
+	</Podmiot2>
+	<Fa>
+		<KodWaluty>PLN</KodWaluty>
+		<P_1>2022-02-15</P_1>
+		<P_2>FV2022/02/150</P_2>
+		<P_6>2022-01-03</P_6>
+		<P_15>450</P_15>
+		<Adnotacje>
+			<P_16>2</P_16>
+			<P_17>2</P_17>
+			<P_18>2</P_18>
+			<P_18A>2</P_18A>
+			<Zwolnienie>
+				<P_19N>1</P_19N>
+			</Zwolnienie>
+			<NoweSrodkiTransportu>
+				<P_22N>1</P_22N>
+			</NoweSrodkiTransportu>
+			<P_23>2</P_23>
+			<PMarzy>
+				<P_PMarzyN>1</P_PMarzyN>
+			</PMarzy>
+		</Adnotacje>
+		<RodzajFaktury>UPR</RodzajFaktury>
+		<FaWiersz>
+			<NrWierszaFa>1</NrWierszaFa>
+			<P_7>wiertarka Wiertex mk5</P_7>
+			<P_12>23</P_12>
+		</FaWiersz>
+	</Fa>
+	<Stopka>
+		<Informacje>
+			<StopkaFaktury>Kapiał zakładowy 5 000 000</StopkaFaktury>
+		</Informacje>
+		<Rejestry>
+			<KRS>0000099999</KRS>
+			<REGON>999999999</REGON>
+			<BDO>000099999</BDO>
+		</Rejestry>
+	</Stopka>
+</Faktura>
+
+```
+
+<br>
+
+**Yanlış düzenlenmiş fatura.**
+
+?> Yanlış düzenlenmiş fatura 300.000,00 £ tutarında eksik faturalandırılmış
+ödenmemiş tutar, bir Aslında, 307.635,00 PLN tutarında bir ödeme alınmıştır.
+
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<Faktura xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2022/01/05/eD/DefinicjeTypy/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://crd.gov.pl/wzor/2023/06/29/12648/">
+	<Naglowek>
+		<KodFormularza kodSystemowy="FA (2)" wersjaSchemy="1-0E">FA</KodFormularza>
+		<WariantFormularza>2</WariantFormularza>
+		<DataWytworzeniaFa>2022-01-01T00:00:00Z</DataWytworzeniaFa>
+		<SystemInfo>Samplofaktur</SystemInfo>
+	</Naglowek>
+	<Podmiot1>
+		<DaneIdentyfikacyjne>
+			<NIP>9999999999</NIP>
+			<Nazwa>ABC Developex S.A.</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Sadowa 1 lok. 3</AdresL1>
+			<AdresL2>00-002 Kraków</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>abc@abc.pl</Email>
+			<Telefon>667444555</Telefon>
+		</DaneKontaktowe>
+	</Podmiot1>
+	<Podmiot2>
+		<DaneIdentyfikacyjne>
+			<NIP>1111111111</NIP>
+			<Nazwa>F.H.U. Jan Kowalski</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Polna 1</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>jan@kowalski.pl</Email>
+			<Telefon>555777999</Telefon>
+		</DaneKontaktowe>
+	</Podmiot2>
+	<Podmiot3>
+		<DaneIdentyfikacyjne>
+			<NIP>3333333333</NIP>
+			<Nazwa>F.H.U. Grażyna Kowalska</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Polna 1</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>jan@kowalski.pl</Email>
+			<Telefon>555777999</Telefon>
+		</DaneKontaktowe>
+		<Rola>4</Rola>
+		<Udzial>50</Udzial>
+	</Podmiot3>
+	<Fa>
+		<KodWaluty>PLN</KodWaluty>
+		<P_1>2022-08-17</P_1>
+		<P_1M>Warszawa</P_1M>
+		<P_2>FV2022/08/12</P_2>
+		<P_6>2022-09-17</P_6>
+		<P_13_1>3998.40</P_13_1>
+		<P_14_1>919.63</P_14_1>
+		<P_13_2>273224.05</P_13_2>
+		<P_14_2>21857.92</P_14_2>
+		<P_15>300000</P_15>
+		<Adnotacje>
+			<P_16>2</P_16>
+			<P_17>2</P_17>
+			<P_18>2</P_18>
+			<P_18A>2</P_18A>
+			<Zwolnienie>
+				<P_19N>1</P_19N>
+			</Zwolnienie>
+			<NoweSrodkiTransportu>
+				<P_22N>1</P_22N>
+			</NoweSrodkiTransportu>
+			<P_23>2</P_23>
+			<PMarzy>
+				<P_PMarzyN>1</P_PMarzyN>
+			</PMarzy>
+		</Adnotacje>
+		<RodzajFaktury>ROZ</RodzajFaktury>
+		<DodatkowyOpis>
+			<Klucz>wysokosć pozostałej do zapłaty kwoty</Klucz>
+			<Wartosc>300000 zł</Wartosc>
+		</DodatkowyOpis>
+		<FakturaZaliczkowa>			
+			<NrKSeFFaZaliczkowej>9999999999-20230908-8BEF280C8D35-4D</NrKSeFFaZaliczkowej>
+		</FakturaZaliczkowa>
+		<FaWiersz>
+			<NrWierszaFa>1</NrWierszaFa>
+			<UU_ID>aaaa111133339997</UU_ID>
+			<P_7>mieszkanie 50m^2</P_7>
+			<P_8A>szt.</P_8A>
+			<P_8B>1</P_8B>
+			<P_9A>307500</P_9A>
+			<P_11>307500</P_11>
+			<P_12>8</P_12>
+			<GTU>GTU_10</GTU>
+		</FaWiersz>
+		<FaWiersz>
+			<NrWierszaFa>2</NrWierszaFa>
+			<UU_ID>aaaa111133339998</UU_ID>
+			<P_7>usługi dodatkowe</P_7>
+			<P_8A>szt.</P_8A>
+			<P_8B>1</P_8B>
+			<P_9A>4500</P_9A>
+			<P_11>4500</P_11>
+			<P_12>23</P_12>
+		</FaWiersz>
+	</Fa>
+	<Stopka>
+		<Informacje>
+			<StopkaFaktury>Kapiał zakładowy 5 000 000</StopkaFaktury>
+		</Informacje>
+		<Rejestry>
+			<KRS>0000099999</KRS>
+			<REGON>999999999</REGON>
+			<BDO>000099999</BDO>
+		</Rejestry>
+	</Stopka>
+</Faktura>
+
+```
+
+<br>
+
+
+**Yukarıdaki faturalandırma faturasını düzelten bir fatura**
+
+?> Örnekten 307.635,00 PLN tutarındaki doğru ödemeyi gösteren uzlaştırma faturasının düzeltme faturası `FaRows` bölümünde sunulan sipariş değerinde değişiklik yok. `KOR_ROZ` fatura türünde (`KOR_ZAL`'a benzer şekilde) böyle bir sunum, sipariş değerinde herhangi bir değişiklik olmadığı anlamına gelir. faturaya karşı sipariş değeri düzeltilmiş ve sadece diğer veriler değişmiştir - bu durumda ödenen miktarın değeri. `P_13_x` - `P_14_x` alanlarındaki vergi matrahları ve vergi miktarları arasındaki bölünmüş oranın dağılımı, oranlara göre
+satırların sonuç değerinden değil, vergi düzeltme sonrası durumu teyit eden satırların değerleri.
+
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<Faktura xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2022/01/05/eD/DefinicjeTypy/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://crd.gov.pl/wzor/2023/06/29/12648/">
+	<Naglowek>
+		<KodFormularza kodSystemowy="FA (2)" wersjaSchemy="1-0E">FA</KodFormularza>
+		<WariantFormularza>2</WariantFormularza>
+		<DataWytworzeniaFa>2022-01-01T00:00:00Z</DataWytworzeniaFa>
+		<SystemInfo>Samplofaktur</SystemInfo>
+	</Naglowek>
+	<Podmiot1>
+		<DaneIdentyfikacyjne>
+			<NIP>9999999999</NIP>
+			<Nazwa>ABC Developex S.A.</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Sadowa 1 lok. 3</AdresL1>
+			<AdresL2>00-002 Kraków</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>abc@abc.pl</Email>
+			<Telefon>667444555</Telefon>
+		</DaneKontaktowe>
+	</Podmiot1>
+	<Podmiot2>
+		<DaneIdentyfikacyjne>
+			<NIP>1111111111</NIP>
+			<Nazwa>F.H.U. Jan Kowalski</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Polna 1</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>jan@kowalski.pl</Email>
+			<Telefon>555777999</Telefon>
+		</DaneKontaktowe>
+	</Podmiot2>
+	<Podmiot3>
+		<DaneIdentyfikacyjne>
+			<NIP>3333333333</NIP>
+			<Nazwa>F.H.U. Grażyna Kowalska</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Polna 1</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>jan@kowalski.pl</Email>
+			<Telefon>555777999</Telefon>
+		</DaneKontaktowe>
+		<Rola>4</Rola>
+		<Udzial>50</Udzial>
+	</Podmiot3>
+	<Fa>
+		<KodWaluty>PLN</KodWaluty>
+		<P_1>2022-08-17</P_1>
+		<P_1M>Warszawa</P_1M>
+		<P_2>FK2022/09/1</P_2>
+		<P_6>2022-09-17</P_6>
+		<P_13_1>101.76</P_13_1>
+		<P_14_1>23.41</P_14_1>
+		<P_13_2>6953.54</P_13_2>
+		<P_14_2>556.29</P_14_2>
+		<P_15>7635</P_15>
+		<Adnotacje>
+			<P_16>2</P_16>
+			<P_17>2</P_17>
+			<P_18>2</P_18>
+			<P_18A>2</P_18A>
+			<Zwolnienie>
+				<P_19N>1</P_19N>
+			</Zwolnienie>
+			<NoweSrodkiTransportu>
+				<P_22N>1</P_22N>
+			</NoweSrodkiTransportu>
+			<P_23>2</P_23>
+			<PMarzy>
+				<P_PMarzyN>1</P_PMarzyN>
+			</PMarzy>
+		</Adnotacje>
+		<RodzajFaktury>KOR_ROZ</RodzajFaktury>
+		<PrzyczynaKorekty>błędne zafakturowanie kwoty pozostałej do zapłaty: było 300000, a powinno być 307635</PrzyczynaKorekty>
+		<TypKorekty>1</TypKorekty>
+		<DaneFaKorygowanej>
+			<DataWystFaKorygowanej>2022-08-17</DataWystFaKorygowanej>
+			<NrFaKorygowanej>FV2022/08/12</NrFaKorygowanej>
+			<NrKSeF>1</NrKSeF>
+			<NrKSeFFaKorygowanej>9999999999-20230908-8BEF280C8D35-4D</NrKSeFFaKorygowanej>
+		</DaneFaKorygowanej>
+		<P_15ZK>300000</P_15ZK>
+		<FakturaZaliczkowa>			
+			<NrKSeFFaZaliczkowej>9999999999-20230908-76B2B580D4DC-80</NrKSeFFaZaliczkowej>
+		</FakturaZaliczkowa>
+		<FaWiersz>
+			<NrWierszaFa>1</NrWierszaFa>
+			<UU_ID>aaaa111133339997</UU_ID>
+			<P_7>mieszkanie 50m^2</P_7>
+			<P_8A>szt.</P_8A>
+			<P_8B>1</P_8B>
+			<P_9A>307500</P_9A>
+			<P_11>307500</P_11>
+			<P_12>8</P_12>
+			<GTU>GTU_10</GTU>
+			<StanPrzed>1</StanPrzed>
+		</FaWiersz>
+		<FaWiersz>
+			<NrWierszaFa>1</NrWierszaFa>
+			<UU_ID>aaaa111133339997</UU_ID>
+			<P_7>mieszkanie 50m2</P_7>
+			<P_8A>szt.</P_8A>
+			<P_8B>1</P_8B>
+			<P_9A>307500</P_9A>
+			<P_11>307500</P_11>
+			<P_12>8</P_12>
+			<GTU>GTU_10</GTU>
+		</FaWiersz>
+		<FaWiersz>
+			<NrWierszaFa>2</NrWierszaFa>
+			<UU_ID>aaaa111133339998</UU_ID>
+			<P_7>usługi dodatkowe</P_7>
+			<P_8A>szt.</P_8A>
+			<P_8B>1</P_8B>
+			<P_9A>4500</P_9A>
+			<P_11>4500</P_11>
+			<P_12>23</P_12>
+			<StanPrzed>1</StanPrzed>
+		</FaWiersz>
+		<FaWiersz>
+			<NrWierszaFa>2</NrWierszaFa>
+			<UU_ID>aaaa111133339998</UU_ID>
+			<P_7>usługi dodatkowe</P_7>
+			<P_8A>szt.</P_8A>
+			<P_8B>1</P_8B>
+			<P_9A>4500</P_9A>
+			<P_11>4500</P_11>
+			<P_12>23</P_12>
+		</FaWiersz>
+	</Fa>
+	<Stopka>
+		<Informacje>
+			<StopkaFaktury>Kapiał zakładowy 5 000 000</StopkaFaktury>
+		</Informacje>
+		<Rejestry>
+			<KRS>0000099999</KRS>
+			<REGON>999999999</REGON>
+			<BDO>000099999</BDO>
+		</Rejestry>
+	</Stopka>
+</Faktura>
+
+```
+
+<br>
+
+**Marj KDV faturası Turizm hizmetlerinin sunumunun belgelenmesi**
+
+?> Kısmen standart %23 vergi oranını (ikinci satır) ve kısmen marj prosedürünü (ilk satır) uygulayan turizm hizmetlerinin tedarikini belgeleyen bir KDV marj faturası.
+
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<Faktura xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2022/01/05/eD/DefinicjeTypy/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://crd.gov.pl/wzor/2023/06/29/12648/">
+	<Naglowek>
+		<KodFormularza kodSystemowy="FA (2)" wersjaSchemy="1-0E">FA</KodFormularza>
+		<WariantFormularza>2</WariantFormularza>
+		<DataWytworzeniaFa>2022-01-01T00:00:00Z</DataWytworzeniaFa>
+		<SystemInfo>Samplofaktur</SystemInfo>
+	</Naglowek>
+	<Podmiot1>
+		<DaneIdentyfikacyjne>
+			<NIP>9999999999</NIP>
+			<Nazwa>Biuro Podróży ABC sp. z o. o.</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Sadowa 1 lok. 3</AdresL1>
+			<AdresL2>00-002 Kraków</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>abc@abc.pl</Email>
+			<Telefon>667444555</Telefon>
+		</DaneKontaktowe>
+	</Podmiot1>
+	<Podmiot2>
+		<DaneIdentyfikacyjne>
+			<NIP>1111111111</NIP>
+			<Nazwa>F.H.U. Jan Kowalski</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Polna 1</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>jan@kowalski.pl</Email>
+			<Telefon>555777999</Telefon>
+		</DaneKontaktowe>
+	</Podmiot2>
+	<Fa>
+		<KodWaluty>PLN</KodWaluty>
+		<P_1>2022-01-27</P_1>
+		<P_1M>Warszawa</P_1M>
+		<P_2>FM2022/02/150</P_2>
+		<P_6>2022-01-27</P_6>
+		<P_13_1>813</P_13_1>
+		<P_14_1>187</P_14_1>
+		<P_13_11>2000</P_13_11>
+		<P_15>3000</P_15>
+		<Adnotacje>
+			<P_16>2</P_16>
+			<P_17>2</P_17>
+			<P_18>2</P_18>
+			<P_18A>2</P_18A>
+			<Zwolnienie>
+				<P_19N>1</P_19N>
+			</Zwolnienie>
+			<NoweSrodkiTransportu>
+				<P_22N>1</P_22N>
+			</NoweSrodkiTransportu>
+			<P_23>2</P_23>
+			<PMarzy>
+				<P_PMarzy>1</P_PMarzy>
+				<P_PMarzy_2>1</P_PMarzy_2>
+			</PMarzy>
+		</Adnotacje>
+		<RodzajFaktury>VAT</RodzajFaktury>
+		<FaWiersz>
+			<NrWierszaFa>1</NrWierszaFa>
+			<P_7>wycieczka na Mazury usługi obce</P_7>
+			<P_8A>szt.</P_8A>
+			<P_8B>1</P_8B>
+			<P_9B>2000</P_9B>
+			<P_11A>2000</P_11A>
+		</FaWiersz>
+		<FaWiersz>
+			<NrWierszaFa>2</NrWierszaFa>
+			<P_7>wycieczka na Mazury usługa własna</P_7>
+			<P_8A>szt.</P_8A>
+			<P_8B>1</P_8B>
+			<P_9B>1000</P_9B>
+			<P_11A>1000</P_11A>
+			<P_12>23</P_12>
+		</FaWiersz>
+	</Fa>
+	<Stopka>
+		<Informacje>
+			<StopkaFaktury>Kapiał zakładowy 5 000 000</StopkaFaktury>
+		</Informacje>
+		<Rejestry>
+			<KRS>0000099999</KRS>
+			<REGON>999999999</REGON>
+			<BDO>000099999</BDO>
+		</Rejestry>
+	</Stopka>
+</Faktura>
+
+```
+
+<br>
+
+**Yabancı para cinsinden yurtiçi fatura**
+
+?> Bir faturanın tüm satırları için aynı döviz kuru kullanıldığında örnek
+
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<Faktura xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2022/01/05/eD/DefinicjeTypy/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://crd.gov.pl/wzor/2023/06/29/12648/">
+	<Naglowek>
+		<KodFormularza kodSystemowy="FA (2)" wersjaSchemy="1-0E">FA</KodFormularza>
+		<WariantFormularza>2</WariantFormularza>
+		<DataWytworzeniaFa>2022-01-01T00:00:00Z</DataWytworzeniaFa>
+		<SystemInfo>Samplofaktur</SystemInfo>
+	</Naglowek>
+	<Podmiot1>
+		<DaneIdentyfikacyjne>
+			<NIP>9999999999</NIP>
+			<Nazwa>ABC AGD sp. z o. o.</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Kwiatowa 1 m. 2</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>abc@abc.pl</Email>
+			<Telefon>667444555</Telefon>
+		</DaneKontaktowe>
+	</Podmiot1>
+	<Podmiot2>
+		<DaneIdentyfikacyjne>
+			<NIP>1111111111</NIP>
+			<Nazwa>CDE sp. j.</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Sadowa 1 lok. 3</AdresL1>
+			<AdresL2>00-002 Kraków</AdresL2>
+			<GLN>a</GLN>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>cde@cde.pl</Email>
+			<Telefon>555777999</Telefon>
+		</DaneKontaktowe>
+		<NrKlienta>fdfd778343</NrKlienta>
+	</Podmiot2>
+	<Fa>
+		<KodWaluty>EUR</KodWaluty>
+		<P_1>2022-02-15</P_1>
+		<P_1M>Warszawa</P_1M>
+		<P_2>FV2022/02/150</P_2>
+		<P_13_1>13560</P_13_1>
+		<P_14_1>3118.80</P_14_1>
+		<P_14_1W>14036.16</P_14_1W>
+		<P_15>16678.80</P_15>
+		<Adnotacje>
+			<P_16>2</P_16>
+			<P_17>2</P_17>
+			<P_18>2</P_18>
+			<P_18A>2</P_18A>
+			<Zwolnienie>
+				<P_19N>1</P_19N>
+			</Zwolnienie>
+			<NoweSrodkiTransportu>
+				<P_22N>1</P_22N>
+			</NoweSrodkiTransportu>
+			<P_23>2</P_23>
+			<PMarzy>
+				<P_PMarzyN>1</P_PMarzyN>
+			</PMarzy>
+		</Adnotacje>
+		<RodzajFaktury>VAT</RodzajFaktury>
+		<FaWiersz>
+			<NrWierszaFa>1</NrWierszaFa>
+			<UU_ID>aaaa111133339990</UU_ID>
+			<P_6A>2022-02-20</P_6A>
+			<P_7>lodówka Zimnotech mk1</P_7>
+			<CN>8418 21 91</CN>
+			<P_8A>szt.</P_8A>
+			<P_8B>10</P_8B>
+			<P_9A>406</P_9A>
+			<P_11>4060</P_11>
+			<P_12>23</P_12>
+			<KursWaluty>4.5005</KursWaluty>
+		</FaWiersz>
+		<FaWiersz>
+			<NrWierszaFa>2</NrWierszaFa>
+			<UU_ID>aaaa111133339991</UU_ID>
+			<P_6A>2022-02-25</P_6A>
+			<P_7>zamrażarka Zimnotech mk2</P_7>
+			<CN>8418 40 20</CN>
+			<P_8A>szt.</P_8A>
+			<P_8B>20</P_8B>
+			<P_9A>250</P_9A>
+			<P_11>5000</P_11>
+			<P_12>23</P_12>
+			<KursWaluty>4.5005</KursWaluty>
+		</FaWiersz>
+		<FaWiersz>
+			<NrWierszaFa>3</NrWierszaFa>
+			<UU_ID>aaaa111133339992</UU_ID>
+			<P_6A>2022-02-26</P_6A>
+			<P_7>zmywarka Bryza 100</P_7>
+			<CN>8422 11 00</CN>
+			<P_8A>szt.</P_8A>
+			<P_8B>15</P_8B>
+			<P_9A>300</P_9A>
+			<P_11>4500</P_11>
+			<P_12>23</P_12>
+			<KursWaluty>4.5005</KursWaluty>
+		</FaWiersz>
+		<Platnosc>
+			<TerminPlatnosci>
+				<Termin>2022-03-15</Termin>
+			</TerminPlatnosci>
+			<FormaPlatnosci>6</FormaPlatnosci>
+			<RachunekBankowyFaktora>
+				<NrRB>73111111111111111111111111</NrRB>
+				<RachunekWlasnyBanku>2</RachunekWlasnyBanku>
+				<NazwaBanku>Bank Bankowości Bankowej S. A.</NazwaBanku>
+				<OpisRachunku>PLN</OpisRachunku>
+			</RachunekBankowyFaktora>
+		</Platnosc>
+		<WarunkiTransakcji>
+			<Zamowienia>
+				<DataZamowienia>2022-01-26</DataZamowienia>
+				<NrZamowienia>4354343</NrZamowienia>
+			</Zamowienia>
+			<NrPartiiTowaru>2312323/2022</NrPartiiTowaru>
+			<WarunkiDostawy>CIP</WarunkiDostawy>
+			<Transport>
+				<RodzajTransportu>3</RodzajTransportu>
+				<Przewoznik>
+					<DaneIdentyfikacyjne>
+						<NIP>6666666666</NIP>
+						<Nazwa>Jan Nowak Transport</Nazwa>
+					</DaneIdentyfikacyjne>
+					<AdresPrzewoznika>
+						<KodKraju>PL</KodKraju>
+						<AdresL1>ul. Bukowa 5</AdresL1>
+						<AdresL2>00-004 Poznań</AdresL2>
+					</AdresPrzewoznika>
+				</Przewoznik>
+				<OpisLadunku>13</OpisLadunku>
+				<JednostkaOpakowania>a</JednostkaOpakowania>
+				<WysylkaZ>
+					<KodKraju>PL</KodKraju>
+					<AdresL1>Sadowa 1 lok. 2</AdresL1>
+					<AdresL2>00-001 Warszawa</AdresL2>
+				</WysylkaZ>
+				<WysylkaDo>
+					<KodKraju>PL</KodKraju>
+					<AdresL1>ul. Sadowa 1 lok. 3</AdresL1>
+					<AdresL2>00-002 Kraków</AdresL2>
+				</WysylkaDo>
+			</Transport>
+		</WarunkiTransakcji>
+	</Fa>
+	<Stopka>
+		<Informacje>
+			<StopkaFaktury>Kapiał zakładowy 5 000 000</StopkaFaktury>
+		</Informacje>
+		<Rejestry>
+			<KRS>0000099999</KRS>
+			<REGON>999999999</REGON>
+			<BDO>000099999</BDO>
+		</Rejestry>
+	</Stopka>
+</Faktura>
+
+```
+
+<br>
+
+**Yabancı para cinsinden yurtiçi fatura**
+
+?> Bir faturanın farklı satırları için farklı döviz kurlarının kullanıldığı örnek. Vergi tutarını dönüştürmek için ağırlıklı bir döviz kuru kullanılmıştır. Satışların toplam değeri üzerinden hesaplanan vergi tutarının PLN'ye dönüştürülmesi ilkesine uygun olarak.
+
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<Faktura xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2022/01/05/eD/DefinicjeTypy/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://crd.gov.pl/wzor/2023/06/29/12648/">
+	<Naglowek>
+		<KodFormularza kodSystemowy="FA (2)" wersjaSchemy="1-0E">FA</KodFormularza>
+		<WariantFormularza>2</WariantFormularza>
+		<DataWytworzeniaFa>2022-01-01T00:00:00Z</DataWytworzeniaFa>
+		<SystemInfo>Samplofaktur</SystemInfo>
+	</Naglowek>
+	<Podmiot1>
+		<DaneIdentyfikacyjne>
+			<NIP>9999999999</NIP>
+			<Nazwa>ABC AGD sp. z o. o.</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Kwiatowa 1 m. 2</AdresL1>
+			<AdresL2>00-001 Warszawa</AdresL2>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>abc@abc.pl</Email>
+			<Telefon>667444555</Telefon>
+		</DaneKontaktowe>
+	</Podmiot1>
+	<Podmiot2>
+		<DaneIdentyfikacyjne>
+			<NIP>1111111111</NIP>
+			<Nazwa>CDE sp. j.</Nazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<KodKraju>PL</KodKraju>
+			<AdresL1>ul. Sadowa 1 lok. 3</AdresL1>
+			<AdresL2>00-002 Kraków</AdresL2>
+			<GLN>a</GLN>
+		</Adres>
+		<DaneKontaktowe>
+			<Email>cde@cde.pl</Email>
+			<Telefon>555777999</Telefon>
+		</DaneKontaktowe>
+		<NrKlienta>fdfd778343</NrKlienta>
+	</Podmiot2>
+	<Fa>
+		<KodWaluty>EUR</KodWaluty>
+		<P_1>2022-02-15</P_1>
+		<P_1M>Warszawa</P_1M>
+		<P_2>FV2022/02/150</P_2>
+		<P_13_1>13560</P_13_1>
+		<P_14_1>3118.80</P_14_1>
+		<P_14_1W>13768.14</P_14_1W>
+		<P_15>16678.80</P_15>
+		<Adnotacje>
+			<P_16>2</P_16>
+			<P_17>2</P_17>
+			<P_18>2</P_18>
+			<P_18A>2</P_18A>
+			<Zwolnienie>
+				<P_19N>1</P_19N>
+			</Zwolnienie>
+			<NoweSrodkiTransportu>
+				<P_22N>1</P_22N>
+			</NoweSrodkiTransportu>
+			<P_23>2</P_23>
+			<PMarzy>
+				<P_PMarzyN>1</P_PMarzyN>
+			</PMarzy>
+		</Adnotacje>
+		<RodzajFaktury>VAT</RodzajFaktury>
+		<FaWiersz>
+			<NrWierszaFa>1</NrWierszaFa>
+			<UU_ID>aaaa111133339990</UU_ID>
+			<P_6A>2022-02-05</P_6A>
+			<P_7>lodówka Zimnotech mk1</P_7>
+			<CN>8418 21 91</CN>
+			<P_8A>szt.</P_8A>
+			<P_8B>10</P_8B>
+			<P_9A>406</P_9A>
+			<P_11>4060</P_11>
+			<P_12>23</P_12>
+			<KursWaluty>4.4080</KursWaluty>
+		</FaWiersz>
+		<FaWiersz>
+			<NrWierszaFa>2</NrWierszaFa>
+			<UU_ID>aaaa111133339991</UU_ID>
+			<P_6A>2022-02-10</P_6A>
+			<P_7>zamrażarka Zimnotech mk2</P_7>
+			<CN>8418 40 20</CN>
+			<P_8A>szt.</P_8A>
+			<P_8B>20</P_8B>
+			<P_9A>250</P_9A>
+			<P_11>5000</P_11>
+			<P_12>23</P_12>
+			<KursWaluty>4.5005</KursWaluty>
+		</FaWiersz>
+		<FaWiersz>
+			<NrWierszaFa>3</NrWierszaFa>
+			<UU_ID>aaaa111133339992</UU_ID>
+			<P_6A>2022-02-20</P_6A>
+			<P_7>zmywarka Bryza 100</P_7>
+			<CN>8422 11 00</CN>
+			<P_8A>szt.</P_8A>
+			<P_8B>15</P_8B>
+			<P_9A>300</P_9A>
+			<P_11>4500</P_11>
+			<P_12>23</P_12>
+			<KursWaluty>4.3250</KursWaluty>
+		</FaWiersz>
+		<Platnosc>
+			<TerminPlatnosci>
+				<Termin>2022-03-15</Termin>
+			</TerminPlatnosci>
+			<FormaPlatnosci>6</FormaPlatnosci>
+			<RachunekBankowyFaktora>
+				<NrRB>73111111111111111111111111</NrRB>
+				<RachunekWlasnyBanku>2</RachunekWlasnyBanku>
+				<NazwaBanku>Bank Bankowości Bankowej S. A.</NazwaBanku>
+				<OpisRachunku>PLN</OpisRachunku>
+			</RachunekBankowyFaktora>
+		</Platnosc>
+		<WarunkiTransakcji>
+			<Zamowienia>
+				<DataZamowienia>2022-01-26</DataZamowienia>
+				<NrZamowienia>4354343</NrZamowienia>
+			</Zamowienia>
+			<NrPartiiTowaru>2312323/2022</NrPartiiTowaru>
+			<WarunkiDostawy>CIP</WarunkiDostawy>
+			<Transport>
+				<RodzajTransportu>3</RodzajTransportu>
+				<Przewoznik>
+					<DaneIdentyfikacyjne>
+						<NIP>6666666666</NIP>
+						<Nazwa>Jan Nowak Transport</Nazwa>
+					</DaneIdentyfikacyjne>
+					<AdresPrzewoznika>
+						<KodKraju>PL</KodKraju>
+						<AdresL1>ul. Bukowa 5</AdresL1>
+						<AdresL2>00-004 Poznań</AdresL2>
+					</AdresPrzewoznika>
+				</Przewoznik>
+				<OpisLadunku>13</OpisLadunku>
+				<JednostkaOpakowania>a</JednostkaOpakowania>
+				<WysylkaZ>
+					<KodKraju>PL</KodKraju>
+					<AdresL1>Sadowa 1 lok. 2</AdresL1>
+					<AdresL2>00-001 Warszawa</AdresL2>
+				</WysylkaZ>
+				<WysylkaDo>
+					<KodKraju>PL</KodKraju>
+					<AdresL1>ul. Sadowa 1 lok. 3</AdresL1>
+					<AdresL2>00-002 Kraków</AdresL2>
+				</WysylkaDo>
+			</Transport>
+		</WarunkiTransakcji>
+	</Fa>
+	<Stopka>
+		<Informacje>
+			<StopkaFaktury>Kapiał zakładowy 5 000 000</StopkaFaktury>
+		</Informacje>
+		<Rejestry>
+			<KRS>0000099999</KRS>
+			<REGON>999999999</REGON>
+			<BDO>000099999</BDO>
+		</Rejestry>
+	</Stopka>
+</Faktura>
+
+```
+
+<br>
+
 ## KSeF API (OpenAPI) 
 
 ### Sistem Ortamı `environment_path` 
